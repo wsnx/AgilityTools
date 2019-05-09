@@ -117,21 +117,29 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="refresh" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\refresh.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ConWms" xml:space="preserve">
-    <value>Integrated Security=False;Data Source=U4t@wm10x;Initial Catalog=UUAPR;User ID=wmwhse36;Password=U4t@wm10x;</value>
-    <comment>UAT</comment>
-  </data>
-  <data name="search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\search.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="find" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\find.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Images\print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAQAABMLAAATCwAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/cgAA/3IAA/9yAAv/cgAC/3IAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/cgAA/3IABP9yAHH/cgDA/3IAXv9y
+        AAD/cgAAAAAAAAAAAAAAAAAAAAAAAP9xAAD/cgAA/3IAHP9yAET/cgAV/3IAAP9yABz/cgDc/3IA//9y
+        ANf/cgAd/3IAAAAAAAAAAAAAAAAAAAAAAAD/cgAA/3IADP9yAK//cgD7/3IApP9yAAr/cgAf/3IA4v9y
+        AP//cgD8/3IAXf9yAAD/cgAAAAAAAAAAAAAAAAAA/3IAAP9yAB//cgDg/3IA//9yAPb/cgBL/3IAKv9y
+        AOv/cgD//3IA//9yAJ7/cgAB/3IAAAAAAAAAAAAAAAAAAP9yAAD/cgBA/3IA8/9yAP//cgD//3IAfP9y
+        AFD/cgD7/3IA//9yAP//cgDK/3IAEP9yAAAAAAAAAAAAAP9yAAD/cgAF/3IAl/9yAPT/cgD+/3IA//9y
+        AHP/cgCZ/3IA//9yAP//cgD//3IA4v9yACH/cgAAAAAAAP9yAAD/cQAB/3IAY/9yAOT/cgCA/3IA8P9y
+        ANz/cgBd/3IA5f9yAP//cgD//3IA//9yAOz/cgAt/3IAAP9yAAD/cgAL/3IAbf9yAO3/cgDw/3IAZv9y
+        AOj/cgB+/3IAnv9yAP//cgD//3IA//9yAP//cgDu/3IAL/9yAAD/cgAJ/3IAkv9yAPn/cgD//3IA4/9y
+        AGj/cgDw/3IA1P9yAPT/cgD//3IA8v9yAPn/cgD//3IA5/9yACf/cgAA/3IAGv9yANP/cgD//3IA9v9y
+        AIT/cgB+/3IA//9yAP//cgD//3IA7P9yAIr/cgDs/3IA//9yANb/cgAX/3IAAP9yAAL/cgBg/3IAq/9y
+        AFr/cgAS/3IAvv9yAP//cgD//3IA7v9yAGX/cgBj/3IA/f9yAP//cgC0/3IAB/9yAAD/cwAA/3IAAf9y
+        AAP/cQAA/3IABv9yAJ//cgD6/3IA0v9yAFH/cgAK/3IArf9yAP//cgD//3IAe/9yAAD/cgAAAAAAAAAA
+        AAAAAAAA/3IAAP9yAAD/cgAW/3IAQ/9yAB7/cgAA/3IAGv9yANr/cgD//3IA7f9yADf/cgAAAAAAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA/3IAAP9yAAb/cgCG/3IA2v9yAIX/cgAH/3IAAAAA
+        AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAD/cgAA/3IACP9yABv/cgAH/3IAAAAA
+        AAAAAAAA/8cAAP+HAAD4gwAA8AMAAPABAADwAQAA4AEAAMABAACAAQAAAAEAAAABAAAAAQAAkAMAAPiD
+        AAD/gwAA/8cAAA==
+</value>
   </data>
 </root>

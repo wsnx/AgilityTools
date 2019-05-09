@@ -11,6 +11,22 @@
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>ftp://10.130.12.190/PLBSAMI/</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,9 +47,35 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Images\fav.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>AgilityTools.Program</StartupObject>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>B4DEE405D0947487C2015B1B723C258043C5E9C8</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>AgilityTools_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -45,14 +87,145 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ConfigDB.cs" />
+    <Compile Include="View\Mapping\MappingHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\MappingHome.Designer.cs">
+      <DependentUpon>MappingHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Print.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Print.Designer.cs">
+      <DependentUpon>Print.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mapping\MappingReport.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\MappingReport.Designer.cs">
+      <DependentUpon>MappingReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Receiving\Report\ITS.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Receiving\Report\ITS.Designer.cs">
+      <DependentUpon>ITS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Report\MappingList.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MappingList.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\MappingList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\MappingList.Designer.cs">
+      <DependentUpon>MappingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\ContentView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\ContentView.Designer.cs">
+      <DependentUpon>ContentView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLogin.Designer.cs">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Flat\LoginForm.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form_Flat\LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Flat\MapingHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Form_Flat\MapingHome.Designer.cs">
+      <DependentUpon>MapingHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form_Flat\Mapping.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form_Flat\Mapping.Designer.cs">
+      <DependentUpon>Mapping.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\Receiving\ReceivedList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Receiving\ReceivedList.Designer.cs">
+      <DependentUpon>ReceivedList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Receiving\ReceivingHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Receiving\ReceivingHome.Designer.cs">
+      <DependentUpon>ReceivingHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Receiving\Report\Lpenerimaan.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Receiving\Report\Lpenerimaan.Designer.cs">
+      <DependentUpon>Lpenerimaan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Receiving\Report\Lselisih.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Receiving\Report\Lselisih.Designer.cs">
+      <DependentUpon>Lselisih.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="View\Mapping\MappingHome.resx">
+      <DependentUpon>MappingHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Print.resx">
+      <DependentUpon>Print.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Receiving\Report\ITS.resx">
+      <DependentUpon>ITS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Report\MappingList.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>MappingList.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Mapping\MappingList.resx">
+      <DependentUpon>MappingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\ContentView.resx">
+      <DependentUpon>ContentView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLogin.resx">
+      <DependentUpon>FormLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Flat\MapingHome.resx">
+      <DependentUpon>MapingHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form_Flat\Mapping.resx">
+      <DependentUpon>Mapping.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -61,7 +234,21 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="View\Receiving\ReceivedList.resx">
+      <DependentUpon>ReceivedList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Receiving\ReceivingHome.resx">
+      <DependentUpon>ReceivingHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Receiving\Report\Lpenerimaan.resx">
+      <DependentUpon>Lpenerimaan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Receiving\Report\Lselisih.resx">
+      <DependentUpon>Lselisih.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="AgilityTools_TemporaryKey.pfx" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -74,6 +261,30 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Images\fav.ico" />
+    <Content Include="Images\favicon.ico" />
+    <Content Include="Images\find.png" />
+    <Content Include="Images\Icon.ico" />
+    <Content Include="Images\print.png" />
+    <Content Include="Images\refresh.png" />
+    <Content Include="Images\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

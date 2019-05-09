@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace AgilityTools
 {
-    public partial class Form1 : Form
+    public partial class AgilityTools : Form
     {
-        public Form1()
+        public AgilityTools()
         {
             InitializeComponent();
+            FormLogin f2 = new FormLogin();
+            f2.MdiParent = this;
+            f2.Show();
+             
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.Black;
+            
         }
     }
 }
