@@ -60,7 +60,7 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>w.ico</ApplicationIcon>
+    <ApplicationIcon>Images\w.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject>AgilityTools.Program</StartupObject>
@@ -100,6 +100,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ConfigDB.cs" />
+    <Compile Include="View\Mapping\Report\rptMovementList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\Report\rptMovementList.Designer.cs">
+      <DependentUpon>rptMovementList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Mapping\Report\rptMappingList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Mapping\Report\rptMappingList.Designer.cs">
+      <DependentUpon>rptMappingList.cs</DependentUpon>
+    </Compile>
     <Compile Include="View\Mapping\MappingHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -123,12 +135,6 @@
     </Compile>
     <Compile Include="View\Receiving\Report\ITS.Designer.cs">
       <DependentUpon>ITS.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Report\MappingList.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>MappingList.rpt</DependentUpon>
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="View\Mapping\MappingList.cs">
       <SubType>UserControl</SubType>
@@ -160,24 +166,6 @@
     <Compile Include="Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="Form_Flat\LoginForm.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Form_Flat\LoginForm.Designer.cs">
-      <DependentUpon>LoginForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Flat\MapingHome.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Form_Flat\MapingHome.Designer.cs">
-      <DependentUpon>MapingHome.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Form_Flat\Mapping.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Form_Flat\Mapping.Designer.cs">
-      <DependentUpon>Mapping.cs</DependentUpon>
-    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\Receiving\ReceivedList.cs">
@@ -204,6 +192,12 @@
     <Compile Include="View\Receiving\Report\Lselisih.Designer.cs">
       <DependentUpon>Lselisih.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="View\Mapping\Report\rptMovementList.resx">
+      <DependentUpon>rptMovementList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Mapping\Report\rptMappingList.resx">
+      <DependentUpon>rptMappingList.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\Mapping\MappingHome.resx">
       <DependentUpon>MappingHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -212,10 +206,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Receiving\Report\ITS.resx">
       <DependentUpon>ITS.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Report\MappingList.rpt">
-      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
-      <LastGenOutput>MappingList.cs</LastGenOutput>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Mapping\MappingList.resx">
       <DependentUpon>MappingList.cs</DependentUpon>
@@ -231,12 +221,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Flat\MapingHome.resx">
-      <DependentUpon>MapingHome.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Form_Flat\Mapping.resx">
-      <DependentUpon>Mapping.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -285,7 +269,7 @@
     <Content Include="Images\print.png" />
     <Content Include="Images\refresh.png" />
     <Content Include="Images\search.png" />
-    <Content Include="w.ico" />
+    <Content Include="Images\w.ico" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">

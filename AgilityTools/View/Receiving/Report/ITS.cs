@@ -32,7 +32,7 @@ namespace AgilityTools
             string[] theFolders = Directory.GetDirectories(@"\\10.130.37.5\repository\home\CR");
 
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("\\10.130.37.5\\repository\\home\\CR");
+            cryRpt.Load("C:\\CR\\ITS.rpt");
             crystalReportViewer1.ReportSource = cryRpt;
             crystalReportViewer1.Refresh();
 

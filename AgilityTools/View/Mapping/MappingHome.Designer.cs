@@ -34,7 +34,7 @@
             System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mapping", new System.Windows.Forms.TreeNode[] {
             treeNode1,
             treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("MapingList", 3, 11);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("MappingList", 3, 11);
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("MovementList", 3, 11);
             System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
             treeNode4,
@@ -42,9 +42,9 @@
             System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Back", 6, 6);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MappingHomes));
             this.MappingTree = new System.Windows.Forms.TreeView();
+            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.PanelView = new System.Windows.Forms.Panel();
-            this.imageList1 = new System.Windows.Forms.ImageList(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -75,7 +75,7 @@
             treeNode4.ImageIndex = 3;
             treeNode4.Name = "MappingList";
             treeNode4.SelectedImageIndex = 11;
-            treeNode4.Text = "MapingList";
+            treeNode4.Text = "MappingList";
             treeNode5.ImageIndex = 3;
             treeNode5.Name = "MovementList";
             treeNode5.SelectedImageIndex = 11;
@@ -95,6 +95,23 @@
             this.MappingTree.Size = new System.Drawing.Size(281, 701);
             this.MappingTree.TabIndex = 3;
             this.MappingTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MappingTree_AfterSelect);
+            // 
+            // imageList1
+            // 
+            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
+            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
+            this.imageList1.Images.SetKeyName(0, "add.png");
+            this.imageList1.Images.SetKeyName(1, "home.png");
+            this.imageList1.Images.SetKeyName(2, "folder.png");
+            this.imageList1.Images.SetKeyName(3, "report.png");
+            this.imageList1.Images.SetKeyName(4, "User.png");
+            this.imageList1.Images.SetKeyName(5, "iconfinder_Manager_131484.png");
+            this.imageList1.Images.SetKeyName(6, "Back.png");
+            this.imageList1.Images.SetKeyName(7, "print.png");
+            this.imageList1.Images.SetKeyName(8, "chart.png");
+            this.imageList1.Images.SetKeyName(9, "Forklift.png");
+            this.imageList1.Images.SetKeyName(10, "number.png");
+            this.imageList1.Images.SetKeyName(11, "ctn.png");
             // 
             // splitContainer1
             // 
@@ -120,23 +137,6 @@
             this.PanelView.Name = "PanelView";
             this.PanelView.Size = new System.Drawing.Size(1129, 701);
             this.PanelView.TabIndex = 0;
-            // 
-            // imageList1
-            // 
-            this.imageList1.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imageList1.ImageStream")));
-            this.imageList1.TransparentColor = System.Drawing.Color.Transparent;
-            this.imageList1.Images.SetKeyName(0, "add.png");
-            this.imageList1.Images.SetKeyName(1, "home.png");
-            this.imageList1.Images.SetKeyName(2, "folder.png");
-            this.imageList1.Images.SetKeyName(3, "report.png");
-            this.imageList1.Images.SetKeyName(4, "User.png");
-            this.imageList1.Images.SetKeyName(5, "iconfinder_Manager_131484.png");
-            this.imageList1.Images.SetKeyName(6, "Back.png");
-            this.imageList1.Images.SetKeyName(7, "print.png");
-            this.imageList1.Images.SetKeyName(8, "chart.png");
-            this.imageList1.Images.SetKeyName(9, "Forklift.png");
-            this.imageList1.Images.SetKeyName(10, "number.png");
-            this.imageList1.Images.SetKeyName(11, "ctn.png");
             // 
             // MappingHomes
             // 
