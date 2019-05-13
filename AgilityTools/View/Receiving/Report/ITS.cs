@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CrystalDecisions.CrystalReports.Engine;
+using System.Net;
+using System.IO;
 
 namespace AgilityTools
 {
@@ -25,8 +27,12 @@ namespace AgilityTools
         }
         private void openCR()
         {
+            WebClient request = new WebClient();
+            request.Credentials = new NetworkCredential("Logistics\\administrator", "Useradm1n");
+            string[] theFolders = Directory.GetDirectories(@"\\10.130.37.5\repository\home\CR");
+
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("C:\\CR\\ReportITS.rpt");
+            cryRpt.Load("\\10.130.37.5\\repository\\home\\CR");
             crystalReportViewer1.ReportSource = cryRpt;
             crystalReportViewer1.Refresh();
 

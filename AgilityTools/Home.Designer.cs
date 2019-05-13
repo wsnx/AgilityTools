@@ -30,38 +30,40 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
-            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Dashboard");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Receiving");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mapping");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Menu", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode19 = new System.Windows.Forms.TreeNode("Dashboard");
+            System.Windows.Forms.TreeNode treeNode20 = new System.Windows.Forms.TreeNode("Receiving");
+            System.Windows.Forms.TreeNode treeNode21 = new System.Windows.Forms.TreeNode("Mapping");
+            System.Windows.Forms.TreeNode treeNode22 = new System.Windows.Forms.TreeNode("Order");
+            System.Windows.Forms.TreeNode treeNode23 = new System.Windows.Forms.TreeNode("Menu", new System.Windows.Forms.TreeNode[] {
+            treeNode19,
+            treeNode20,
+            treeNode21,
+            treeNode22});
+            System.Windows.Forms.TreeNode treeNode24 = new System.Windows.Forms.TreeNode("PaletID");
+            System.Windows.Forms.TreeNode treeNode25 = new System.Windows.Forms.TreeNode("MappingList");
+            System.Windows.Forms.TreeNode treeNode26 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
+            treeNode24,
+            treeNode25});
+            System.Windows.Forms.TreeNode treeNode27 = new System.Windows.Forms.TreeNode("Manage");
+            System.Windows.Forms.TreeNode treeNode28 = new System.Windows.Forms.TreeNode("User", new System.Windows.Forms.TreeNode[] {
+            treeNode27});
+            System.Windows.Forms.TreeNode treeNode29 = new System.Windows.Forms.TreeNode("Log Out");
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint3 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(5D, 10D);
+            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint4 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
+            System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Receiving");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Mapping");
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Home", new System.Windows.Forms.TreeNode[] {
             treeNode1,
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("PaletID");
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("MappingList");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode6});
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Manage");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("User", new System.Windows.Forms.TreeNode[] {
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Exit");
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint1 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(5D, 10D);
-            System.Windows.Forms.DataVisualization.Charting.DataPoint dataPoint2 = new System.Windows.Forms.DataVisualization.Charting.DataPoint(10D, 10D);
-            System.Windows.Forms.TreeNode treeNode11 = new System.Windows.Forms.TreeNode("Receiving");
-            System.Windows.Forms.TreeNode treeNode12 = new System.Windows.Forms.TreeNode("Mapping");
-            System.Windows.Forms.TreeNode treeNode13 = new System.Windows.Forms.TreeNode("Home", new System.Windows.Forms.TreeNode[] {
-            treeNode11,
-            treeNode12});
-            System.Windows.Forms.TreeNode treeNode14 = new System.Windows.Forms.TreeNode("PaletID");
-            System.Windows.Forms.TreeNode treeNode15 = new System.Windows.Forms.TreeNode("MappingList");
-            System.Windows.Forms.TreeNode treeNode16 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
-            treeNode14,
-            treeNode15});
-            System.Windows.Forms.TreeNode treeNode17 = new System.Windows.Forms.TreeNode("User");
+            treeNode2});
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("PaletID");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("MappingList");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("User");
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel1 = new System.Windows.Forms.Panel();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
@@ -83,17 +85,12 @@
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ASN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Expected = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Received = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Percentage = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.toolStrip2 = new System.Windows.Forms.ToolStrip();
             this.toolStripLabel2 = new System.Windows.Forms.ToolStripLabel();
             this.ExplorerView = new System.Windows.Forms.TreeView();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.lblUserName = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabel1 = new System.Windows.Forms.ToolStripStatusLabel();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -115,8 +112,8 @@
             this.splitContainer3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.toolStrip2.SuspendLayout();
+            this.lblUserName.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -158,7 +155,7 @@
             // pictureBox2
             // 
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
-            this.pictureBox2.Location = new System.Drawing.Point(1336, 18);
+            this.pictureBox2.Location = new System.Drawing.Point(1336, 6);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(118, 59);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -168,7 +165,7 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(22, 18);
+            this.pictureBox1.Location = new System.Drawing.Point(21, 3);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(146, 59);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -233,6 +230,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel3.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.panel3.Controls.Add(this.lblUserName);
             this.panel3.Controls.Add(this.treeView1);
             this.panel3.Location = new System.Drawing.Point(0, 0);
             this.panel3.Name = "panel3";
@@ -245,48 +243,54 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.treeView1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.treeView1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.treeView1.ImageIndex = 0;
             this.treeView1.ImageList = this.imageList1;
             this.treeView1.Indent = 20;
-            this.treeView1.ItemHeight = 50;
+            this.treeView1.ItemHeight = 30;
             this.treeView1.LineColor = System.Drawing.Color.DimGray;
             this.treeView1.Location = new System.Drawing.Point(0, 0);
             this.treeView1.Name = "treeView1";
-            treeNode1.ImageKey = "chart.png";
-            treeNode1.Name = "Dashboard";
-            treeNode1.Text = "Dashboard";
-            treeNode2.ImageKey = "Forklift.png";
-            treeNode2.Name = "Receiving";
-            treeNode2.Text = "Receiving";
-            treeNode3.ImageKey = "ctn.png";
-            treeNode3.Name = "Mapping";
-            treeNode3.Text = "Mapping";
-            treeNode4.ImageKey = "folder.png";
-            treeNode4.Name = "Home";
-            treeNode4.Text = "Menu";
-            treeNode5.ImageKey = "print.png";
-            treeNode5.Name = "PrintLabel";
-            treeNode5.Text = "PaletID";
-            treeNode6.ImageKey = "print.png";
-            treeNode6.Name = "MappingList";
-            treeNode6.Text = "MappingList";
-            treeNode7.ImageKey = "report.png";
-            treeNode7.Name = "Report";
-            treeNode7.Text = "Report";
-            treeNode8.Name = "Manage";
-            treeNode8.Text = "Manage";
-            treeNode9.ImageKey = "iconfinder_Manager_131484.png";
-            treeNode9.Name = "User";
-            treeNode9.Text = "User";
-            treeNode10.ImageKey = "Back.png";
-            treeNode10.Name = "Exit";
-            treeNode10.Text = "Exit";
+            treeNode19.ImageKey = "chart.png";
+            treeNode19.Name = "Dashboard";
+            treeNode19.Text = "Dashboard";
+            treeNode20.ImageKey = "Forklift.png";
+            treeNode20.Name = "Receiving";
+            treeNode20.Text = "Receiving";
+            treeNode21.ImageKey = "ctn.png";
+            treeNode21.Name = "Mapping";
+            treeNode21.Text = "Mapping";
+            treeNode22.ImageIndex = 4;
+            treeNode22.Name = "Order";
+            treeNode22.Text = "Order";
+            treeNode23.ImageKey = "folder.png";
+            treeNode23.Name = "Home";
+            treeNode23.Text = "Menu";
+            treeNode24.ImageKey = "print.png";
+            treeNode24.Name = "PrintLabel";
+            treeNode24.Text = "PaletID";
+            treeNode25.ImageKey = "print.png";
+            treeNode25.Name = "MappingList";
+            treeNode25.Text = "MappingList";
+            treeNode26.ImageKey = "report.png";
+            treeNode26.Name = "Report";
+            treeNode26.Text = "Report";
+            treeNode27.Name = "Manage";
+            treeNode27.Text = "Manage";
+            treeNode28.ImageKey = "iconfinder_Manager_131484.png";
+            treeNode28.Name = "User";
+            treeNode28.Text = "User";
+            treeNode29.ForeColor = System.Drawing.Color.Red;
+            treeNode29.ImageKey = "Back.png";
+            treeNode29.Name = "Log Out";
+            treeNode29.NodeFont = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            treeNode29.Text = "Log Out";
             this.treeView1.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode4,
-            treeNode7,
-            treeNode9,
-            treeNode10});
+            treeNode23,
+            treeNode26,
+            treeNode28,
+            treeNode29});
             this.treeView1.SelectedImageIndex = 0;
             this.treeView1.Size = new System.Drawing.Size(177, 507);
             this.treeView1.TabIndex = 0;
@@ -370,21 +374,21 @@
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
             this.chart1.Location = new System.Drawing.Point(108, 29);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
-            series1.Legend = "Legend1";
-            series1.Name = "Series2";
-            dataPoint1.Label = "Received";
-            dataPoint2.Label = "Expected";
-            series1.Points.Add(dataPoint1);
-            series1.Points.Add(dataPoint2);
-            this.chart1.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Pie;
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            dataPoint3.Label = "Received";
+            dataPoint4.Label = "Expected";
+            series2.Points.Add(dataPoint3);
+            series2.Points.Add(dataPoint4);
+            this.chart1.Series.Add(series2);
             this.chart1.Size = new System.Drawing.Size(411, 209);
             this.chart1.TabIndex = 12;
             this.chart1.Text = "chart1";
@@ -437,62 +441,11 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel2.AutoSize = true;
-            this.panel2.Controls.Add(this.dataGridView1);
             this.panel2.Controls.Add(this.toolStrip2);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1301, 353);
             this.panel2.TabIndex = 0;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllHeaders;
-            this.dataGridView1.BackgroundColor = System.Drawing.Color.White;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Date,
-            this.Customer,
-            this.ASN,
-            this.Expected,
-            this.Received,
-            this.Percentage});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(0, 0);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 28;
-            this.dataGridView1.Size = new System.Drawing.Size(1301, 325);
-            this.dataGridView1.TabIndex = 1;
-            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
-            // 
-            // Date
-            // 
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            // 
-            // Customer
-            // 
-            this.Customer.HeaderText = "Customer";
-            this.Customer.Name = "Customer";
-            // 
-            // ASN
-            // 
-            this.ASN.HeaderText = "ASN";
-            this.ASN.Name = "ASN";
-            // 
-            // Expected
-            // 
-            this.Expected.HeaderText = "Expected";
-            this.Expected.Name = "Expected";
-            // 
-            // Received
-            // 
-            this.Received.HeaderText = "Received";
-            this.Received.Name = "Received";
-            // 
-            // Percentage
-            // 
-            this.Percentage.HeaderText = "Percentage";
-            this.Percentage.Name = "Percentage";
             // 
             // toolStrip2
             // 
@@ -522,30 +475,47 @@
             this.ExplorerView.LineColor = System.Drawing.Color.DimGray;
             this.ExplorerView.Location = new System.Drawing.Point(0, 0);
             this.ExplorerView.Name = "ExplorerView";
-            treeNode11.Name = "Receiving";
-            treeNode11.Text = "Receiving";
-            treeNode12.Name = "Mapping";
-            treeNode12.Text = "Mapping";
-            treeNode13.Name = "Home";
-            treeNode13.Text = "Home";
-            treeNode14.Name = "PrintLabel";
-            treeNode14.Text = "PaletID";
-            treeNode15.Name = "MappingList";
-            treeNode15.Text = "MappingList";
-            treeNode16.Name = "Report";
-            treeNode16.Text = "Report";
-            treeNode17.Name = "User";
-            treeNode17.Text = "User";
+            treeNode1.Name = "Receiving";
+            treeNode1.Text = "Receiving";
+            treeNode2.Name = "Mapping";
+            treeNode2.Text = "Mapping";
+            treeNode3.Name = "Home";
+            treeNode3.Text = "Home";
+            treeNode4.Name = "PrintLabel";
+            treeNode4.Text = "PaletID";
+            treeNode5.Name = "MappingList";
+            treeNode5.Text = "MappingList";
+            treeNode6.Name = "Report";
+            treeNode6.Text = "Report";
+            treeNode7.Name = "User";
+            treeNode7.Text = "User";
             this.ExplorerView.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode13,
-            treeNode16,
-            treeNode17});
+            treeNode3,
+            treeNode6,
+            treeNode7});
             this.ExplorerView.Size = new System.Drawing.Size(1486, 509);
             this.ExplorerView.TabIndex = 4;
             // 
             // toolTip1
             // 
             this.toolTip1.ToolTipIcon = System.Windows.Forms.ToolTipIcon.Info;
+            // 
+            // lblUserName
+            // 
+            this.lblUserName.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.lblUserName.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabel1});
+            this.lblUserName.Location = new System.Drawing.Point(0, 477);
+            this.lblUserName.Name = "lblUserName";
+            this.lblUserName.Size = new System.Drawing.Size(177, 30);
+            this.lblUserName.TabIndex = 1;
+            this.lblUserName.Text = "statusStrip1";
+            // 
+            // toolStripStatusLabel1
+            // 
+            this.toolStripStatusLabel1.Name = "toolStripStatusLabel1";
+            this.toolStripStatusLabel1.Size = new System.Drawing.Size(179, 25);
+            this.toolStripStatusLabel1.Text = "toolStripStatusLabel1";
             // 
             // Home
             // 
@@ -559,6 +529,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Show;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Home";
+            this.Load += new System.EventHandler(this.Home_Load);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -575,6 +546,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer2)).EndInit();
             this.splitContainer2.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
             this.panel4.ResumeLayout(false);
             this.splitContainer3.Panel1.ResumeLayout(false);
             this.splitContainer3.Panel1.PerformLayout();
@@ -585,9 +557,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.toolStrip2.ResumeLayout(false);
             this.toolStrip2.PerformLayout();
+            this.lblUserName.ResumeLayout(false);
+            this.lblUserName.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -609,7 +582,6 @@
         private System.Windows.Forms.SplitContainer splitContainer3;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button button2;
@@ -617,14 +589,10 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.ImageList imageList1;
         private System.Windows.Forms.ToolTip toolTip1;
-        private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ASN;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Expected;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Received;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Percentage;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripLabel toolStripLabel2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.StatusStrip lblUserName;
+        private System.Windows.Forms.ToolStripStatusLabel toolStripStatusLabel1;
     }
 }

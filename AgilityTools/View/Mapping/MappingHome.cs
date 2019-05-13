@@ -21,7 +21,7 @@ namespace AgilityTools
         {
             TreeNode node = MappingTree.SelectedNode;
 
-            if (node.Text == "Exit")
+            if (node.Text == "Back")
             {
 
                 Home f2 = new Home();

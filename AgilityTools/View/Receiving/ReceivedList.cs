@@ -36,7 +36,6 @@ namespace AgilityTools.View.Receiving
 
             dgsDetailsReceipt.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange;
             dgsDetailsReceipt2.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange;
-
             //Function
             getExpected();
         }

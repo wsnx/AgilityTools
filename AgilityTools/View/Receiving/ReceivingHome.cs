@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using AgilityTools.View.Receiving;
 using AgilityTools.View.Receiving.Report;
@@ -37,16 +36,16 @@ namespace AgilityTools
 
             TreeNode node = ReceivingTree.SelectedNode;
             lblForm.Text = node.Text;
-            if (node.Text == "Exit")
+            if (node.Text == "Back")
             {
-                
+                ContentView f = new ContentView();
+                f.Close();
                 Home f2 = new Home();
                 f2.MdiParent = AgilityTools.ActiveForm;
                 f2.Show();
             }
             else if (node.Text == "Planing")
             {
-                 
                 PanelView.Controls.Clear();
                 PanelView.Dock = DockStyle.Fill;
                 ReceivedList userControl = new ReceivedList();

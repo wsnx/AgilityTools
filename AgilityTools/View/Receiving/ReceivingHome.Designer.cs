@@ -45,7 +45,7 @@
             treeNode6,
             treeNode7,
             treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Exit");
+            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Back");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceivingHome));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -135,9 +135,9 @@
             treeNode9.SelectedImageIndex = 7;
             treeNode9.Text = "Report";
             treeNode10.ImageKey = "Back.png";
-            treeNode10.Name = "Exit";
+            treeNode10.Name = "Back";
             treeNode10.SelectedImageIndex = 6;
-            treeNode10.Text = "Exit";
+            treeNode10.Text = "Back";
             this.ReceivingTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode5,
             treeNode9,

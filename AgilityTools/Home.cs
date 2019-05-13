@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
+using System.IO;
 using System.Linq;
+using System.Net;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AgilityTools
@@ -20,7 +22,14 @@ namespace AgilityTools
             this.Size = new System.Drawing.Size(1000, 600);
 
         }
-
+        private void Home_Load(object sender, EventArgs e)
+        {
+            lblUserName.Text = FormLogin.UserName;
+            WebClient request = new WebClient();
+            request.Credentials = new NetworkCredential("Logistics\\administrator", "Useradm1n");
+            string[] theFolders = Directory.GetDirectories(@"\\10.130.37.5\repository\home\CR");
+        }
+        
         private void pictureBox1_Click(object sender, EventArgs e)
         {
 
@@ -66,6 +75,7 @@ namespace AgilityTools
             }
             else if (key == "0")
             {
+                this.Close();
                 Home f2 = new Home();
                 f2.MdiParent = AgilityTools.ActiveForm;
                 f2.Show();
@@ -75,9 +85,17 @@ namespace AgilityTools
         private void treeView1_AfterSelect(object sender, TreeViewEventArgs e)
         {
                 TreeNode node = treeView1.SelectedNode;
-                if (node.Text == "Receiving")
+                if (node.Text == "Log Out")
                 {
-                    this.Hide();
+                    this.Close();
+                    FormLogin f2 = new FormLogin();
+                    f2.MdiParent = AgilityTools.ActiveForm;
+                    f2.Show();
+
+                }
+                else if (node.Text == "Receiving")
+                {
+                    this.Close();
                     vKey = "1";
                     ContentView f2 = new ContentView();
                     f2.MdiParent = AgilityTools.ActiveForm;
@@ -86,7 +104,7 @@ namespace AgilityTools
                 }
                 else if (node.Text == "Mapping")
                 {
-                    this.Hide();
+                    this.Close();
                     vKey = "2";
                     ContentView f2 = new ContentView();
                     f2.MdiParent = AgilityTools.ActiveForm;
@@ -110,5 +128,11 @@ namespace AgilityTools
         {
 
         }
+
+        private void dataGridView1_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+                    }
+
+      
     }
 }
