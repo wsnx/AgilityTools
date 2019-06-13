@@ -30,22 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Planing");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("By Date");
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("By No");
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Actual", new System.Windows.Forms.TreeNode[] {
-            treeNode2,
-            treeNode3});
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Receiving", 2, 2, new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode4});
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("ITS");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("GRN");
-            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Selisih");
-            System.Windows.Forms.TreeNode treeNode9 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
-            treeNode6,
-            treeNode7,
-            treeNode8});
-            System.Windows.Forms.TreeNode treeNode10 = new System.Windows.Forms.TreeNode("Back");
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Receiving", 2, 2, new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("ITS");
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("GRN");
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("SampleQR");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
+            treeNode3,
+            treeNode4,
+            treeNode5});
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Back");
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ReceivingHome));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
@@ -75,7 +69,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PanelView);
             this.splitContainer1.Size = new System.Drawing.Size(1284, 603);
-            this.splitContainer1.SplitterDistance = 216;
+            this.splitContainer1.SplitterDistance = 173;
             this.splitContainer1.TabIndex = 0;
             // 
             // statusStrip1
@@ -85,7 +79,7 @@
             this.lblForm});
             this.statusStrip1.Location = new System.Drawing.Point(0, 573);
             this.statusStrip1.Name = "statusStrip1";
-            this.statusStrip1.Size = new System.Drawing.Size(216, 30);
+            this.statusStrip1.Size = new System.Drawing.Size(173, 30);
             this.statusStrip1.TabIndex = 3;
             this.statusStrip1.Text = "statusStrip1";
             // 
@@ -110,40 +104,33 @@
             treeNode1.Name = "Planing";
             treeNode1.StateImageKey = "(none)";
             treeNode1.Text = "Planing";
-            treeNode2.Name = "byDate";
-            treeNode2.Text = "By Date";
-            treeNode3.Name = "By No";
-            treeNode3.Text = "By No";
-            treeNode4.ImageKey = "ctn.png";
-            treeNode4.Name = "Actual";
-            treeNode4.Text = "Actual";
-            treeNode5.ImageIndex = 2;
-            treeNode5.Name = "Receiving";
-            treeNode5.SelectedImageIndex = 2;
-            treeNode5.Text = "Receiving";
-            treeNode6.ImageKey = "report.png";
-            treeNode6.Name = "ITS";
-            treeNode6.Text = "ITS";
-            treeNode7.ImageIndex = 3;
-            treeNode7.Name = "GRN";
-            treeNode7.Text = "GRN";
-            treeNode8.ImageKey = "report.png";
-            treeNode8.Name = "Selisih";
-            treeNode8.Text = "Selisih";
-            treeNode9.ImageKey = "print.png";
-            treeNode9.Name = "Report";
-            treeNode9.SelectedImageIndex = 7;
-            treeNode9.Text = "Report";
-            treeNode10.ImageKey = "Back.png";
-            treeNode10.Name = "Back";
-            treeNode10.SelectedImageIndex = 6;
-            treeNode10.Text = "Back";
+            treeNode2.ImageIndex = 2;
+            treeNode2.Name = "Receiving";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "Receiving";
+            treeNode3.ImageKey = "report.png";
+            treeNode3.Name = "ITS";
+            treeNode3.SelectedImageIndex = 0;
+            treeNode3.Text = "ITS";
+            treeNode4.ImageIndex = 3;
+            treeNode4.Name = "GRN";
+            treeNode4.Text = "GRN";
+            treeNode5.Name = "SampleQR";
+            treeNode5.Text = "SampleQR";
+            treeNode6.ImageKey = "print.png";
+            treeNode6.Name = "Report";
+            treeNode6.SelectedImageIndex = 7;
+            treeNode6.Text = "Report";
+            treeNode7.ImageKey = "Back.png";
+            treeNode7.Name = "Back";
+            treeNode7.SelectedImageIndex = 6;
+            treeNode7.Text = "Back";
             this.ReceivingTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode5,
-            treeNode9,
-            treeNode10});
+            treeNode2,
+            treeNode6,
+            treeNode7});
             this.ReceivingTree.SelectedImageIndex = 0;
-            this.ReceivingTree.Size = new System.Drawing.Size(216, 603);
+            this.ReceivingTree.Size = new System.Drawing.Size(173, 603);
             this.ReceivingTree.TabIndex = 2;
             this.ReceivingTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.ReceivingTree_AfterSelect);
             // 
@@ -171,7 +158,7 @@
             this.PanelView.Location = new System.Drawing.Point(0, 0);
             this.PanelView.Margin = new System.Windows.Forms.Padding(0);
             this.PanelView.Name = "PanelView";
-            this.PanelView.Size = new System.Drawing.Size(1064, 603);
+            this.PanelView.Size = new System.Drawing.Size(1107, 603);
             this.PanelView.TabIndex = 0;
             // 
             // ReceivingHome

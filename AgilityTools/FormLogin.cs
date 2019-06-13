@@ -29,12 +29,25 @@ namespace AgilityTools
         private void btn_login_Click(object sender, EventArgs e)
         {
 
+            
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
             Login();
         }
+        protected override bool ShowFocusCues
+        {
+            get
+            {
+                // return base.ShowFocusCues;
+                return false;
+            }
+        }
+
         private void Login()
         {
+            btn_login.BackColor = Color.DarkOrange;
+            btn_login.ForeColor = Color.Black;
+
             ConnLocal.Close();
             SqlCommand cmd = new SqlCommand("select NIK,UserName,Password from kaizendb.dbo.tbplbsami_fg_user where nik =@nik", ConnLocal);
             cmd.Parameters.AddWithValue("@NIK", txt_UserName.Text);
@@ -69,8 +82,7 @@ namespace AgilityTools
             {
                 MessageBox.Show("Password Salah");
             }
-            
-
+         
         }
         private void menu()
         {
@@ -82,7 +94,7 @@ namespace AgilityTools
         }
         private void btn_login_MouseHover(object sender, EventArgs e)
         {
-            btn_login.BackColor = Color.DarkOrange;
+            btn_login.BackColor = Color.Green;
             btn_login.ForeColor = Color.Black;
         }
         private void btn_login_MouseLeave(object sender, EventArgs e)
@@ -105,6 +117,86 @@ namespace AgilityTools
         {
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
+         }
+
+        private void btn_login_MouseEnter(object sender, EventArgs e)
+        {
+            btn_login.BackColor = Color.DarkOrange;
+            btn_login.ForeColor = Color.Black;
+        }
+
+        private void btn_login_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            btn_login.BackColor = Color.DarkOrange;
+            btn_login.ForeColor = Color.Black;
+
+        }
+
+      
+
+        private void txt_UserName_Enter(object sender, EventArgs e)
+        {
+            panel2.BackColor = Color.DarkOrange;
+            txt_UserName.Font = new Font("Microsoft Sans Serif", 18);
+            txt_UserName.ForeColor = Color.Black;
+
+            txt_UserName.Text = "";
+            lblUsername.Visible = true;
+
+        }
+        private void txt_UserName_Leave(object sender, EventArgs e)
+        {
+            panel2.BackColor = Color.DarkGray;
+            lblUsername.Visible = false;
+            if (txt_UserName.Text =="" )
+            {
+                txt_UserName.Text = "Masukan Username";
+                txt_UserName.Font = new Font("Microsoft Sans Serif", 12);
+                txt_UserName.ForeColor = Color.DarkGray;
+
+            }
+            else
+            {
+                txt_UserName.Font = new Font("Microsoft Sans Serif", 18);
+                txt_UserName.ForeColor = Color.Black;
+
+            }
+
+        }
+
+        private void txt_Pass_Enter(object sender, EventArgs e)
+        {
+            panel1.BackColor = Color.DarkOrange;
+            txt_Pass.Font = new Font("Microsoft Sans Serif", 18);
+            txt_Pass.ForeColor = Color.Black;
+            txt_Pass.Text = "";
+            lblPass.Visible = true;
+            lblPass2.Visible = false;
+        }
+
+        private void txt_Pass_Leave(object sender, EventArgs e)
+        {
+            panel1.BackColor = Color.DarkGray;
+            txt_Pass.Font = new Font("Microsoft Sans Serif", 12);
+            txt_Pass.ForeColor = Color.DarkGray;
+            lblPass2.ForeColor = Color.DarkGray;
+            lblPass2.Visible = true;
+            lblPass.Visible = false;
+
+        }
+
+        private void btn_login_Click(object sender, MouseEventArgs e)
+        {
+            btn_login.BackColor = Color.DarkOrange;
+            btn_login.ForeColor = Color.Black;
+            Login();
+        }
+
+        private void FormLogin_Load(object sender, EventArgs e)
+        {
+            
+            lblPass.Visible = false;
+            lblPass2.ForeColor = Color.DarkGray;
 
         }
     }

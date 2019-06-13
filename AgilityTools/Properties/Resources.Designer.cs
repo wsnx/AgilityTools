@@ -61,6 +61,16 @@ namespace AgilityTools.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap close {
+            get {
+                object obj = ResourceManager.GetObject("close", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Integrated Security=False;Data Source=U4t@wm10x;Initial Catalog=UUAPR;User ID=wmwhse36;Password=U4t@wm10x;.
         /// </summary>
         internal static string ConWms {

@@ -36,10 +36,12 @@
             treeNode2});
             System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("MappingList", 3, 11);
             System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("MovementList", 3, 11);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("PalletLabel");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
             treeNode4,
-            treeNode5});
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Back", 6, 6);
+            treeNode5,
+            treeNode6});
+            System.Windows.Forms.TreeNode treeNode8 = new System.Windows.Forms.TreeNode("Back", 6, 6);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MappingHomes));
             this.MappingTree = new System.Windows.Forms.TreeView();
             this.imageList1 = new System.Windows.Forms.ImageList(this.components);
@@ -80,17 +82,19 @@
             treeNode5.Name = "MovementList";
             treeNode5.SelectedImageIndex = 11;
             treeNode5.Text = "MovementList";
-            treeNode6.ImageIndex = 3;
-            treeNode6.Name = "Report";
-            treeNode6.Text = "Report";
-            treeNode7.ImageIndex = 6;
-            treeNode7.Name = "Back";
-            treeNode7.SelectedImageIndex = 6;
-            treeNode7.Text = "Back";
+            treeNode6.Name = "PalletLabel";
+            treeNode6.Text = "PalletLabel";
+            treeNode7.ImageIndex = 3;
+            treeNode7.Name = "Report";
+            treeNode7.Text = "Report";
+            treeNode8.ImageIndex = 6;
+            treeNode8.Name = "Back";
+            treeNode8.SelectedImageIndex = 6;
+            treeNode8.Text = "Back";
             this.MappingTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
             treeNode3,
-            treeNode6,
-            treeNode7});
+            treeNode7,
+            treeNode8});
             this.MappingTree.SelectedImageIndex = 0;
             this.MappingTree.Size = new System.Drawing.Size(281, 701);
             this.MappingTree.TabIndex = 3;

@@ -1,62 +1,48 @@
-﻿using System;
+﻿using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Drawing;
 using System.Data;
+using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrystalDecisions.CrystalReports.Engine;
-using CrystalDecisions.Shared;
-using System.Net;
-using System.IO;
-using CrystalDecisions.Web;
 
-namespace AgilityTools
+namespace AgilityTools.View.Receiving
 {
-    public partial class ITS :UserControl
+    public partial class Reports : Form
     {
-        public string receiptkey ;
-        public ITS()
+        public Reports()
         {
             InitializeComponent();
         }
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            openCR();
-        }
-        private void openCR()
+        private void OpenCR()
         {
             ReportDocument cryRpt = new ReportDocument();
             ParameterFieldDefinitions crParameterFieldDefinitions;
             ParameterFieldDefinition crParameterFieldDefinition;
             ParameterValues crParameterValues = new ParameterValues();
             ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
-            cryRpt.Load("C:\\CR\\reportITS.rpt");
-            crParameterDiscreteValue.Value = txt_fromReceiptkey.Text;
+            cryRpt.Load("C:\\CR\\Lpenerimaan.rpt");
+            crParameterDiscreteValue.Value = ReceivedList.vKey.ToString();
             crystalReportViewer1.ReportSource = cryRpt;
+            cryRpt.SetDatabaseLogon("kadmin", "53c4dm1n", "10.130.24.4", "KaizenDB");
             crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
             crParameterFieldDefinition = crParameterFieldDefinitions["RECEIPTKEY"];
             crParameterValues = crParameterFieldDefinition.CurrentValues;
             crParameterValues.Clear();
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-            cryRpt.SetDatabaseLogon(ConfigDB.DbUserName, ConfigDB.DbPassword, ConfigDB.DbHostname, ConfigDB.DbName);
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Show();
+
         }
+
         private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-        
-        }
-        private void ReceivingReport_Load(object sender, EventArgs e)
-        {
-            ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("C:\\CR\\StandarReport.rpt");
-            crystalReportViewer1.ReportSource = cryRpt;
-            crystalReportViewer1.Refresh();
-            crystalReportViewer1.Show();
+            OpenCR();
         }
     }
 }

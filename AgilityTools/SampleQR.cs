@@ -5,36 +5,25 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
-using CrystalDecisions.CrystalReports.Engine;
-using ZXing.Common;
-using ZXing;
-using ZXing.QrCode;
 using System.Data.SqlClient;
-using System.Threading;
+using ZXing.QrCode;
 using System.IO;
 using System.Drawing.Imaging;
+using CrystalDecisions.CrystalReports.Engine;
+using CrystalDecisions.Shared;
 
 namespace AgilityTools
-
 {
-
-    public partial class rptMappingList : UserControl
+    public partial class SampleQR : UserControl
     {
         SqlConnection ConnWMS = new SqlConnection(ConfigDB.conWMS);
         SqlConnection ConnLocal = new SqlConnection(ConfigDB.DBlocal);
         DataSet DsWMS = new DataSet();
-        private DataTable DtWMS = new DataTable();
-
-        public rptMappingList()
+        public SampleQR()
         {
             InitializeComponent();
-        }
-    
-        private void btnPrint_Click(object sender, EventArgs e)
-        {
-            CreateData();
-
         }
         private void CreateQR()
         {
@@ -45,12 +34,10 @@ namespace AgilityTools
                 Width = 100,
                 Height = 100,
             };
-
             var qr = new ZXing.BarcodeWriter();
             qr.Options = options;
             qr.Format = ZXing.BarcodeFormat.QR_CODE;
             string strData;
-
         }
         private void DeleteData()
         {
@@ -59,15 +46,16 @@ namespace AgilityTools
                 SqlCommand cmd = new SqlCommand();
                 ConnLocal.Open();
                 cmd.Connection = ConnLocal;
-                cmd.CommandText = ("truncate table tbPLBSAMI_FG_PrintMappingList");
+                cmd.CommandText = ("truncate table tbPLBSAMI_FG_SampleCarton");
                 cmd.ExecuteNonQuery();
                 ConnLocal.Close();
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
-            }
+            }   
         }
+
         private void CreateData()
         {
             DeleteData();
@@ -76,17 +64,10 @@ namespace AgilityTools
                 ConnWMS.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = ConnWMS;
-                cmd.CommandText = ("select top 30  lottable01 as CartonID," +
-                    " concat(a.STORERKEY,'\r\n'," +
-                    " toloc,'\r\n', " +
-                    " a.POLINENUMBER  as TOID,'\r\n'," +
-                    " a.SKU,'\r\n'," +
-                    "TOLOT,'\r\n'," +
-                    "a.qtyreceived,'\r\n'," +
-                    "a.Uom,'\r\n\r\n')  as QRconfig " +
-                    "from RECEIPTDETAIL a " +
-                    " inner join sku b on a.sku = b.sku and a.STORERKEY = b.STORERKEY " +
-                    " where a.receiptkey like '%0068%'");
+                cmd.CommandText = ("select concat('TF,1904,17,BIT2',',',SKU,',',Lottable01,',',cast(qtyexpected as int),',','tes') as QrConfig,RECEIPTKEY, " +
+                    " Lottable01 as CartonID, POLINENUMBER  as Pallet from RECEIPTDETAIL " +
+                    " where receiptkey=@Receiptkey");
+                cmd.Parameters.AddWithValue("Receiptkey", txt_fromReceiptkey.Text);
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
                 DA.Fill(DsWMS);
                 ConnWMS.Close();
@@ -104,8 +85,8 @@ namespace AgilityTools
             {
                 DisableECI = true,
                 CharacterSet = "UTF-8",
-                Width = 150,
-                Height =150,
+                Width = 100,
+                Height = 100,
             };
 
             var qr = new ZXing.BarcodeWriter();
@@ -116,29 +97,32 @@ namespace AgilityTools
             this.ProgressBar.Minimum = 0;
             this.ProgressBar.Maximum = DsWMS.Tables[0].Rows.Count + 1;
             this.ProgressBar.Value = 0;
-            
+
+
+
             int a = DsWMS.Tables[0].Rows.Count - 1;
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = ConnLocal;
             ConnLocal.Open();
-            cmd.CommandText = "INSERT INTO tbPLBSAMI_FG_PrintMappingList (Lottable10,QRimage,QRConfig) " +
-                "values(@CartonID,@QRimage,@QRconfig)";
-            
+            cmd.CommandText = "INSERT INTO tbPLBSAMI_FG_SampleCarton (Pallet,CartonID,Receiptkey,QRimage,QRConfig) " +
+                "values(@Pallet,@CartonID,@Receiptkey,@QRimage,@QRconfig)";
+
             for (int i = 0; i <= a; i++)
             {
 
-                LblStatus.Text = ProgressBar.Value + 1.ToString();
                 this.ProgressBar.Value = this.ProgressBar.Value + 1;
                 cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("Pallet", DsWMS.Tables[0].Rows[i]["Pallet"]);
                 cmd.Parameters.AddWithValue("CartonID", DsWMS.Tables[0].Rows[i]["CartonID"]);
+                cmd.Parameters.AddWithValue("Receiptkey", DsWMS.Tables[0].Rows[i]["Receiptkey"]);
                 cmd.Parameters.AddWithValue("QRconfig", DsWMS.Tables[0].Rows[i]["QRconfig"]);
                 strData = DsWMS.Tables[0].Rows[i]["QRconfig"].ToString();
                 Bitmap Result = new Bitmap(qr.Write(strData));
                 Byte[] data;
                 using (var memoryStream = new MemoryStream())
                 {
-                    Result.Save(memoryStream, ImageFormat.Bmp);
+                    Result.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Bmp);
                     data = memoryStream.ToArray();
                 }
                 cmd.Parameters.AddWithValue("@QRimage", data);
@@ -158,38 +142,30 @@ namespace AgilityTools
         private void OpenCR()
         {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("C:\\CR\\MappingList.rpt");
+            ParameterFieldDefinitions crParameterFieldDefinitions;
+            ParameterFieldDefinition crParameterFieldDefinition;
+            ParameterValues crParameterValues = new ParameterValues();
+            ParameterDiscreteValue crParameterDiscreteValue = new ParameterDiscreteValue();
+            cryRpt.Load("C:\\CR\\SampleQR.rpt");
+            crParameterDiscreteValue.Value = txt_fromReceiptkey.Text;
             crystalReportViewer1.ReportSource = cryRpt;
+            crParameterFieldDefinitions = cryRpt.DataDefinition.ParameterFields;
+            crParameterFieldDefinition = crParameterFieldDefinitions["RECEIPTKEY"];
+            crParameterValues = crParameterFieldDefinition.CurrentValues;
+            crParameterValues.Clear();
+            crParameterValues.Add(crParameterDiscreteValue);
+            crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
+            cryRpt.SetDatabaseLogon(ConfigDB.DbUserName, ConfigDB.DbPassword, ConfigDB.DbHostname, ConfigDB.DbName);
             crystalReportViewer1.Refresh();
+            crystalReportViewer1.Show();
 
-        }
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-            
-            
-        }
-        private void rptMappingList_Load(object sender, EventArgs e)
-        {
-            }
 
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            ProgressBar.Value = e.ProgressPercentage;
-            LblStatus.Text = e.ProgressPercentage.ToString();
 
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private void btnPrint_Click(object sender, EventArgs e)
         {
-            int a = DsWMS.Tables[0].Rows.Count ;
-            for (int i = 1; i <= a; i++)
-            {
-                // Wait 50 milliseconds.  
-                Thread.Sleep(50);
-                // Report progress.  
-               backgroundWorker1.ReportProgress(i);
-            }
-
+            CreateData();
         }
     }
 }

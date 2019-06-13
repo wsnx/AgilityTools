@@ -49,13 +49,16 @@
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.Btn_generate = new System.Windows.Forms.ToolStripButton();
             this.BtnNew = new System.Windows.Forms.ToolStripButton();
-            this.openToolStripButton = new System.Windows.Forms.ToolStripButton();
-            this.saveToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.printToolStripButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tabMappingLIST = new System.Windows.Forms.TabControl();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.dgMappingList = new System.Windows.Forms.DataGridView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.dgsMappingList = new System.Windows.Forms.DataGridView();
+            this.ProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -66,6 +69,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgsSummaryMapping)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.tableLayoutPanel1.SuspendLayout();
+            this.tabMappingLIST.SuspendLayout();
+            this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgMappingList)).BeginInit();
+            this.tabPage4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgsMappingList)).BeginInit();
             this.SuspendLayout();
             // 
@@ -147,11 +154,11 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(499, 18);
+            this.label7.Location = new System.Drawing.Point(532, 20);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(84, 25);
+            this.label7.Size = new System.Drawing.Size(77, 25);
             this.label7.TabIndex = 9;
-            this.label7.Text = "Supplier";
+            this.label7.Text = "Factory";
             // 
             // txt_Notes
             // 
@@ -269,11 +276,10 @@
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.Btn_generate,
             this.BtnNew,
-            this.openToolStripButton,
-            this.saveToolStripButton,
             this.printToolStripButton,
             this.toolStripSeparator,
-            this.toolStripSeparator1});
+            this.toolStripSeparator1,
+            this.ProgressBar1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.Size = new System.Drawing.Size(1329, 31);
@@ -300,24 +306,6 @@
             this.BtnNew.Text = "New";
             this.BtnNew.Click += new System.EventHandler(this.BtnNew_Click);
             // 
-            // openToolStripButton
-            // 
-            this.openToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.openToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("openToolStripButton.Image")));
-            this.openToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.openToolStripButton.Name = "openToolStripButton";
-            this.openToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.openToolStripButton.Text = "&Open";
-            // 
-            // saveToolStripButton
-            // 
-            this.saveToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.saveToolStripButton.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripButton.Image")));
-            this.saveToolStripButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.saveToolStripButton.Name = "saveToolStripButton";
-            this.saveToolStripButton.Size = new System.Drawing.Size(28, 28);
-            this.saveToolStripButton.Text = "&Save";
-            // 
             // printToolStripButton
             // 
             this.printToolStripButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -342,7 +330,7 @@
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Controls.Add(this.dgsMappingList, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.tabMappingLIST, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -351,6 +339,49 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(1329, 385);
             this.tableLayoutPanel1.TabIndex = 0;
+            // 
+            // tabMappingLIST
+            // 
+            this.tabMappingLIST.Controls.Add(this.tabPage3);
+            this.tabMappingLIST.Controls.Add(this.tabPage4);
+            this.tabMappingLIST.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tabMappingLIST.Location = new System.Drawing.Point(3, 3);
+            this.tabMappingLIST.Name = "tabMappingLIST";
+            this.tabMappingLIST.SelectedIndex = 0;
+            this.tabMappingLIST.Size = new System.Drawing.Size(1323, 379);
+            this.tabMappingLIST.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.dgMappingList);
+            this.tabPage3.Location = new System.Drawing.Point(4, 29);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(1315, 346);
+            this.tabPage3.TabIndex = 0;
+            this.tabPage3.Text = "MappingList";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // dgMappingList
+            // 
+            this.dgMappingList.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgMappingList.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgMappingList.Location = new System.Drawing.Point(3, 3);
+            this.dgMappingList.Name = "dgMappingList";
+            this.dgMappingList.RowTemplate.Height = 28;
+            this.dgMappingList.Size = new System.Drawing.Size(1309, 340);
+            this.dgMappingList.TabIndex = 0;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.dgsMappingList);
+            this.tabPage4.Location = new System.Drawing.Point(4, 29);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(1315, 346);
+            this.tabPage4.TabIndex = 1;
+            this.tabPage4.Text = "Details";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // dgsMappingList
             // 
@@ -362,8 +393,13 @@
             this.dgsMappingList.Name = "dgsMappingList";
             this.dgsMappingList.ReadOnly = true;
             this.dgsMappingList.RowTemplate.Height = 28;
-            this.dgsMappingList.Size = new System.Drawing.Size(1323, 379);
-            this.dgsMappingList.TabIndex = 3;
+            this.dgsMappingList.Size = new System.Drawing.Size(1309, 340);
+            this.dgsMappingList.TabIndex = 5;
+            // 
+            // ProgressBar1
+            // 
+            this.ProgressBar1.Name = "ProgressBar1";
+            this.ProgressBar1.Size = new System.Drawing.Size(100, 28);
             // 
             // MappingList
             // 
@@ -386,6 +422,10 @@
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.tableLayoutPanel1.ResumeLayout(false);
+            this.tabMappingLIST.ResumeLayout(false);
+            this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgMappingList)).EndInit();
+            this.tabPage4.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgsMappingList)).EndInit();
             this.ResumeLayout(false);
 
@@ -399,8 +439,6 @@
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.ToolStripButton BtnNew;
-        private System.Windows.Forms.ToolStripButton openToolStripButton;
-        private System.Windows.Forms.ToolStripButton saveToolStripButton;
         private System.Windows.Forms.ToolStripButton printToolStripButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -419,6 +457,11 @@
         private System.Windows.Forms.TabPage tabPage1;
         private System.Windows.Forms.DataGridView dgsSummaryMapping;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TabControl tabMappingLIST;
+        private System.Windows.Forms.TabPage tabPage3;
+        private System.Windows.Forms.TabPage tabPage4;
         private System.Windows.Forms.DataGridView dgsMappingList;
+        private System.Windows.Forms.DataGridView dgMappingList;
+        private System.Windows.Forms.ToolStripProgressBar ProgressBar1;
     }
 }

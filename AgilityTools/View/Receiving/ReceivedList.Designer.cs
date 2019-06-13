@@ -225,7 +225,8 @@
             this.DgsSummaryReceipt.ShowEditingIcon = false;
             this.DgsSummaryReceipt.Size = new System.Drawing.Size(1202, 188);
             this.DgsSummaryReceipt.TabIndex = 11;
-            this.DgsSummaryReceipt.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgsSummaryReceipt_CellContentClick);
+            this.DgsSummaryReceipt.CellContentDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.DgsSummaryReceipt_CellContentClick);
+            this.DgsSummaryReceipt.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.DgsSummaryReceipt_CellFormatting);
             // 
             // tabPage4
             // 

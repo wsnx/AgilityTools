@@ -5,14 +5,13 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AgilityTools 
 {
     public partial class ContentView : Form
     {
-        private static string key = Home.vKey;
+        private static string key = Explorer.vkey;
         public ContentView()
         {
             InitializeComponent();
@@ -21,18 +20,17 @@ namespace AgilityTools
         }
         private  void vHandler()
         {
-            if (Home.vKey == "1")
+            if (Explorer.vkey == "1")
             {
                 panelView.Controls.Clear();
                 panelView.Dock = DockStyle.Fill;
-
                 ReceivingHome userControl = new ReceivingHome();
                 userControl.Dock = DockStyle.Fill;
                 panelView.Controls.Add(userControl);
                 
             }
             else
-            if (Home.vKey == "2")
+            if (Explorer.vkey == "2")
             {
                 panelView.Controls.Clear();
                 panelView.Dock = DockStyle.Fill;
@@ -49,6 +47,16 @@ namespace AgilityTools
             Home f2 = new Home();
             f2.MdiParent = AgilityTools.ActiveForm;
             f2.Show();
+        }
+
+        private void lblSignOut_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

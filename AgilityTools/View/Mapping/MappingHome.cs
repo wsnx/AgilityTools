@@ -5,7 +5,6 @@ using System.Drawing;
 using System.Data;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace AgilityTools
@@ -55,6 +54,16 @@ namespace AgilityTools
                 userControl.Dock = DockStyle.Fill;
                 PanelView.Controls.Add(userControl);
             }
+            else if (node.Text == "PalletLabel")
+            {
+                vKey = "1";
+                PanelView.Controls.Clear();
+                PanelView.Dock = DockStyle.Fill;
+                rptPalletLabel userControl = new rptPalletLabel();
+                userControl.Dock = DockStyle.Fill;
+                PanelView.Controls.Add(userControl);
+            }
+
         }
     }
 }

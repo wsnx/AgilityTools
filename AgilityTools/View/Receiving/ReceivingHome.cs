@@ -88,6 +88,14 @@ namespace AgilityTools
                 PanelView.Controls.Add(userControl);
 
             }
+            else if (node.Text == "SampleQR")
+            {
+                PanelView.Controls.Clear();
+                PanelView.Dock = DockStyle.Fill;
+                SampleQR userControl = new SampleQR();
+                userControl.Dock = DockStyle.Fill;
+                PanelView.Controls.Add(userControl);
+            }
             else
             {
             }

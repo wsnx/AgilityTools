@@ -4,8 +4,7 @@ using System.ComponentModel;
 using System.Drawing;
 using System.Data;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;   
+using System.Text; 
 using System.Windows.Forms;
 using System.Data.SqlClient;
 namespace AgilityTools.View.Receiving
@@ -19,6 +18,7 @@ namespace AgilityTools.View.Receiving
         private DataTable DTexpected = new DataTable();
         private DataTable DTreceived = new DataTable();
         private static string AsnCell;
+        public static string vKey;
         public ReceivedList()
         {
             InitializeComponent();
@@ -33,7 +33,6 @@ namespace AgilityTools.View.Receiving
             DgsSummaryReceipt.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange;
             DgsSummaryReceipt.ColumnHeadersDefaultCellStyle.ForeColor = Color.Black;
             DgsSummaryReceipt.GridColor= Color.Gray;
-
             dgsDetailsReceipt.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange;
             dgsDetailsReceipt2.ColumnHeadersDefaultCellStyle.BackColor = Color.Orange;
             //Function
@@ -44,11 +43,14 @@ namespace AgilityTools.View.Receiving
             try
             {
                 ConnLocal.Open();
-                SqlDataAdapter DA = new SqlDataAdapter("Select a.RECEIPTKEY,a.TrailerNumber,a.storerkey, concat(count(b.sku) / count(distinct(a.SKU)), '%') as SKU, concat(count(b.CartonID) / count(distinct(a.LOTTABLE10)), '%') as Carton" +
+                SqlDataAdapter DA = new SqlDataAdapter("Select a.RECEIPTKEY,a.TrailerNumber,a.storerkey, " +
+                "concat(cast((cast(count(distinct(b.sku)) as float) / cast(count(distinct(a.SKU))as float)*100) as decimal (10,2)), '%') as SKU," +
+                "concat(cast(cast(count(b.CartonID) as float) / cast(count(distinct(a.Lottable01))as float) as decimal (10,2)) *100, '%') as Carton ,a.receiptstatus as ASNStatus" +
                 " from kaizenDB.dbo.tbPLBSAMI_FG_stgReceiptdetail a " +
                 " left join kaizenDB.dbo.tbPLBSAMI_FG_UnloadDetails b" +
-                " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.lottable10 = b.cartonid and a.toid = b.frompalletid " +
-                " group by a.RECEIPTKEY,a.TrailerNumber,a.storerkey", ConnLocal);
+                " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.Lottable01 = b.cartonid and a.Toid = b.frompalletid" +
+                " where a.receiptstatus<>'Closed' " +
+                " group by a.RECEIPTKEY,a.TrailerNumber,a.storerkey,a.receiptstatus", ConnLocal);
                 DataSet DS = new DataSet();
                 DA.Fill(DS);
                 DgsSummaryReceipt.DataSource = DS.Tables[0];
@@ -62,15 +64,16 @@ namespace AgilityTools.View.Receiving
 
         private void TarikdataASN()
         {
+            ConnLocal.Close();
             ConnLocal.Open();
             SqlCommand cmd = new SqlCommand("truncate table kaizenDB.dbo.tbPLBSAMI_FG_stgReceiptdetail", ConnLocal);
             cmd.ExecuteNonQuery();
-            MessageBox.Show("succes");
             ConnLocal.Close();
             DataSet ds;
             Conn.Open();
-            SqlDataAdapter DA = new SqlDataAdapter("select a.RECEIPTKEY,a.EXTERNRECEIPTKEY,a.STORERKEY,sku,toid,LOTTABLE10,QTYEXPECTED,QTYRECEIVED,a.ADDDATE,b.TrailerNumber " +
-                "from receiptdetail a inner join receipt b on a.RECEIPTKEY= b.RECEIPTKEY", Conn);
+            SqlDataAdapter DA = new SqlDataAdapter("select a.RECEIPTKEY,a.EXTERNRECEIPTKEY,a.STORERKEY,sku, POLINENUMBER as TOID ,Lottable10,QTYEXPECTED,QTYRECEIVED,a.ADDDATE,b.TrailerNumber,Lottable01," +
+                " case when b.status='9' then 'received' when b.status='0' then 'New' when b.status='5' then 'In Receiving' when b.status='11' then 'Closed' end Receiptstatus" +
+                " from receiptdetail a inner join receipt b on a.RECEIPTKEY= b.RECEIPTKEY", Conn);
             ds = new DataSet();
             DA.Fill(ds);
             Conn.Close();
@@ -94,21 +97,17 @@ namespace AgilityTools.View.Receiving
             ConnLocal.Close();
         }
 
-        private void DgsSummaryReceipt_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataDetail()
         {
-
-            AsnCell = DgsSummaryReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
             ConnLocal.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = ConnLocal;
-            cmd.CommandText = ("Select a.storerkey,a.RECEIPTKEY,a.sku,a.QTYEXPECTED,b.Qty as QtyScan,a.QTYRECEIVED,b.loc ,a.LOTTABLE10 as CartonID , b.CartonID," +
+            cmd.CommandText = ("Select a.storerkey,a.RECEIPTKEY,a.sku,a.QTYEXPECTED,b.Qty as QtyScan,a.QTYRECEIVED,a.TOID as Pallet,b.loc ,a.Lottable01 as CartonIDExpected , b.CartonID as CartonIDScan," +
             " b.UserName,b.Editdate as TglScan , " +
-            "case when b.qty-a.qtyexpected>0 then 'Excess' " +
-            "when b.qty-a.qtyexpected <0 then 'Shortage' " +
-            "when b.qty-qtyexpected=0 then 'OK' end Notes " +
-            " from kaizenDB.dbo.tbPLBSAMI_FG_stgReceiptdetail a left" +
+            " b.notes" +
+            " from kaizenDB.dbo.tbPLBSAMI_FG_stgReceiptdetail a full " +
             " join kaizenDB.dbo.tbPLBSAMI_FG_UnloadDetails b" +
-            " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.lottable10 = b.cartonid and a.toid = b.frompalletid " +
+            " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.Lottable01 = b.cartonid  " +
             " where a.receiptkey =@receiptkey");
             SqlDataAdapter DA = new SqlDataAdapter(cmd);
             cmd.Parameters.AddWithValue("receiptkey", AsnCell);
@@ -116,15 +115,15 @@ namespace AgilityTools.View.Receiving
             DA.Fill(DS);
             dgsDetailsReceipt.DataSource = DS.Tables[0];
             ConnLocal.Close();
-
             ConnLocal.Open();
             SqlCommand cmd2 = new SqlCommand();
             cmd2.Connection = ConnLocal;
-            cmd2.CommandText = "Select a.RECEIPTKEY,Count(distinct(a.toid))as Pallet,count(distinct(a.SKU))as SKUExpected , Count(distinct(a.LOTTABLE10))as CartonExpected ," +
-                "count(b.sku) as SKUreceipt, count(b.cartonID) as CartonReceipt, concat(count(b.sku) / count(distinct(a.SKU)), '%') as SKU, concat(count(b.CartonID) / count(distinct(a.LOTTABLE10)), '%') as Carton" +
+            cmd2.CommandText = "Select a.RECEIPTKEY,Count(distinct(a.TOID))as Pallet,count(distinct(a.SKU))as SKUExpected , Count(distinct(a.Lottable01))as CartonExpected ," +
+                "count(distinct(b.sku)) as SKUreceipt, count(b.cartonID) as CartonReceipt, concat((count(distinct(b.sku)) / count(distinct(a.SKU))*100), '%') as SKU, " +
+                "concat(cast(cast(count(b.CartonID) as float) / cast(count(distinct(a.Lottable01))as float) as decimal (10,2))*100, '%') as Carton" +
                 " from kaizenDB.dbo.tbPLBSAMI_FG_stgReceiptdetail a  " +
                 " left join kaizenDB.dbo.tbPLBSAMI_FG_UnloadDetails b" +
-                " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.lottable10 = b.cartonid and a.toid = b.frompalletid " +
+                " on a.RECEIPTKEY = b.Receiptkey and a.sku = b.sku and a.Lottable01 = b.cartonid and a.TOID = b.frompalletid " +
                 "where a.receiptkey=@receiptkey" +
                 " group by a.RECEIPTKEY";
             SqlDataAdapter DA2 = new SqlDataAdapter(cmd2);
@@ -136,6 +135,12 @@ namespace AgilityTools.View.Receiving
             headerASN();
             tabControl2.SelectedTab = tabPage4;
 
+        }
+
+        private void DgsSummaryReceipt_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            AsnCell = DgsSummaryReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
+            DataDetail();
         }
         private void headerASN()
         {
@@ -165,18 +170,18 @@ namespace AgilityTools.View.Receiving
         }
         private void BtnPrint_Click(object sender, EventArgs e)
         {
-            Print f2 = new Print();
-            //f2.MdiParent = AgilityTools.ActiveForm;
+            vKey = txt_ASN.Text;
+            Reports f2 = new Reports();
+            f2.MdiParent = AgilityTools.ActiveForm;
             f2.Show();
 
         }
         private void btnTarikData_Click(object sender, EventArgs e)
         {
+            getExpected();
             TarikdataASN();
         }
-
-
-        private void dgsDetailsReceipt_CellContentClick(object sender, DataGridViewCellEventArgs e)
+         private void dgsDetailsReceipt_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
@@ -202,7 +207,6 @@ namespace AgilityTools.View.Receiving
         private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
         {
         }
-
         private void dgsDetailsReceipt_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             foreach (DataGridViewRow row in dgsDetailsReceipt.Rows)
@@ -215,6 +219,28 @@ namespace AgilityTools.View.Receiving
                 {
                    
                         row.Cells["QtyScan"].Style.BackColor = Color.Red;
+                }
+            }
+        }
+
+        private void DgsSummaryReceipt_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+
+            foreach (DataGridViewRow row in DgsSummaryReceipt.Rows)
+            {
+                if (Convert.ToString(row.Cells["Carton"].Value) == "100.00%")// Or your condition 
+                {
+                    row.Cells["Carton"].Style.BackColor = Color.Green;
+
+                }
+                else if (Convert.ToString(row.Cells["Carton"].Value) == "0.00%")
+                {
+                    row.Cells["Carton"].Style.BackColor = Color.White;
+
+                }else
+                {
+                    row.Cells["Carton"].Style.BackColor = Color.Red;
+
                 }
             }
         }
