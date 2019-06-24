@@ -27,9 +27,6 @@ namespace AgilityTools
             set { key = value; }
         }
 
-        private void NodesHandler()
-        {  
-        }
         
         public void ReceivingTree_AfterSelect(object sender, TreeViewEventArgs e)
         {

@@ -16,24 +16,21 @@ using System.IO;
 using System.Drawing.Imaging;
 
 namespace AgilityTools
-
 {
-
-    public partial class rptMappingList : UserControl
+    public partial class rptMovev2 : UserControl
     {
         SqlConnection ConnWMS = new SqlConnection(ConfigDB.conWMS);
         SqlConnection ConnLocal = new SqlConnection(ConfigDB.DBlocal);
         DataSet DsWMS = new DataSet();
         private DataTable DtWMS = new DataTable();
 
-        public rptMappingList()
+        public rptMovev2()
         {
             InitializeComponent();
         }
-    
-        private void btnPrint_Click(object sender, EventArgs e)
+
+        private void crystalReportViewer1_Load(object sender, EventArgs e)
         {
-            CreateData();
 
         }
         private void CreateQR()
@@ -75,19 +72,14 @@ namespace AgilityTools
             {
                 ConnWMS.Open();
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = ConnWMS;
-                cmd.CommandText = ("select top 30  lottable01 as CartonID," +
-                    " concat(a.STORERKEY,'\r\n'," +
-                    " toloc,'\r\n', " +
-                    " a.POLINENUMBER  as TOID,'\r\n'," +
-                    " a.SKU,'\r\n'," +
-                    "TOLOT,'\r\n'," +
-                    "a.qtyreceived,'\r\n'," +
-                    "a.Uom,'\r\n\r\n')  as QRconfig " +
-                    "from RECEIPTDETAIL a " +
-                    " inner join sku b on a.sku = b.sku and a.STORERKEY = b.STORERKEY " +
-                    " where a.receiptkey like '%0068%'");
+                cmd.Connection = ConnLocal;
+                cmd.CommandText = ("select b.TASKID,b.MappingID,a.CartonID,a.SKU,CONCAT(a.Storerkey,'\r\n','STAGEIN001','\r\n',lot,'\r\n',a.cartonID,'\r\n',a.sku,'\r\n',qty,'\r\n','SET','\r\n','\r\n','\r\n','STAGEIN001','\r\n',MappingID)as QRconfig " +
+              " from tbPLBSAMI_FG_stgMappingStock a inner join " +
+              " tbPLBSAMI_FG_tempGenerateLIST b on a.CartonID = b.CartonID and a.sku = b.sku and a.Storerkey = b.STorerkey " +
+              " where MappingID= @MappingID " +
+              " order by MappingID,CartonID");
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
+                cmd.Parameters.AddWithValue("MappingID", txt_fromReceiptkey.Text);
                 DA.Fill(DsWMS);
                 ConnWMS.Close();
                 Insert();
@@ -105,7 +97,7 @@ namespace AgilityTools
                 DisableECI = true,
                 CharacterSet = "UTF-8",
                 Width = 150,
-                Height =150,
+                Height = 150,
             };
 
             var qr = new ZXing.BarcodeWriter();
@@ -113,24 +105,26 @@ namespace AgilityTools
             qr.Format = ZXing.BarcodeFormat.QR_CODE;
             string strData;
 
-            this.ProgressBar.Minimum = 0;
-            this.ProgressBar.Maximum = DsWMS.Tables[0].Rows.Count + 1;
-            this.ProgressBar.Value = 0;
-            
+            this.progressBar.Minimum = 0;
+            this.progressBar.Maximum = DsWMS.Tables[0].Rows.Count + 1;
+            this.progressBar.Value = 0;
+
             int a = DsWMS.Tables[0].Rows.Count - 1;
 
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = ConnLocal;
             ConnLocal.Open();
-            cmd.CommandText = "INSERT INTO tbPLBSAMI_FG_PrintMappingList (Lottable10,QRimage,QRConfig) " +
-                "values(@CartonID,@QRimage,@QRconfig)";
-            
+            cmd.CommandText = "INSERT INTO tbPLBSAMI_FG_PrintMappingList (TaskID,MappingID,SKU,CartonID,QRimage,QRConfig) " +
+                "values(@taskID,@mappingID,@SKU,@CartonID,@QRimage,@QRconfig)";
+
             for (int i = 0; i <= a; i++)
             {
-
-                LblStatus.Text = ProgressBar.Value + 1.ToString();
-                this.ProgressBar.Value = this.ProgressBar.Value + 1;
+                
+                this.progressBar.Value = this.progressBar.Value + 1;
                 cmd.Parameters.Clear();
+                cmd.Parameters.AddWithValue("TaskID", DsWMS.Tables[0].Rows[i]["TaskID"]);
+                cmd.Parameters.AddWithValue("MappingID", DsWMS.Tables[0].Rows[i]["MappingID"]);
+                cmd.Parameters.AddWithValue("SKU", DsWMS.Tables[0].Rows[i]["SKU"]);
                 cmd.Parameters.AddWithValue("CartonID", DsWMS.Tables[0].Rows[i]["CartonID"]);
                 cmd.Parameters.AddWithValue("QRconfig", DsWMS.Tables[0].Rows[i]["QRconfig"]);
                 strData = DsWMS.Tables[0].Rows[i]["QRconfig"].ToString();
@@ -144,7 +138,6 @@ namespace AgilityTools
                 cmd.Parameters.AddWithValue("@QRimage", data);
                 try
                 {
-                    LblStatus.Text = "Total " + DsWMS.Tables[0].Rows.Count.ToString();
                     cmd.ExecuteNonQuery();
                 }
                 catch (Exception ex)
@@ -158,38 +151,29 @@ namespace AgilityTools
         private void OpenCR()
         {
             ReportDocument cryRpt = new ReportDocument();
-            cryRpt.Load("C:\\CR\\MappingList.rpt");
+            cryRpt.Load("C:\\CR\\UpdatePalletnew.rpt");
             crystalReportViewer1.ReportSource = cryRpt;
             crystalReportViewer1.Refresh();
 
         }
-        private void crystalReportViewer1_Load(object sender, EventArgs e)
-        {
-            
-            
-        }
-        private void rptMappingList_Load(object sender, EventArgs e)
-        {
-            }
-
-        private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-            ProgressBar.Value = e.ProgressPercentage;
-            LblStatus.Text = e.ProgressPercentage.ToString();
-
-        }
-
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
-            int a = DsWMS.Tables[0].Rows.Count ;
+            int a = DsWMS.Tables[0].Rows.Count;
             for (int i = 1; i <= a; i++)
             {
                 // Wait 50 milliseconds.  
                 Thread.Sleep(50);
                 // Report progress.  
-               backgroundWorker1.ReportProgress(i);
-            }
+                backgroundWorker1.ReportProgress(i);
 
+
+            }
+        }
+
+        private void btnPrint_Click(object sender, EventArgs e)
+        {
+            DeleteData();
+            CreateData();
         }
     }
 }

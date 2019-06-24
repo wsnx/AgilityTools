@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -29,7 +30,7 @@ namespace AgilityTools
         private void btn_login_Click(object sender, EventArgs e)
         {
 
-            
+
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
             Login();
@@ -67,14 +68,14 @@ namespace AgilityTools
                 }
                 goto cek;
                 ConnLocal.Close();
-                }
+            }
             else
             {
                 MessageBox.Show("NIK Belum terdaftar");
             }
             cek:
 
-            if (NIK == txt_UserName.Text &&  txt_Pass.Text == Password)
+            if (NIK == txt_UserName.Text && txt_Pass.Text == Password)
             {
                 menu();
             }
@@ -82,7 +83,7 @@ namespace AgilityTools
             {
                 MessageBox.Show("Password Salah");
             }
-         
+
         }
         private void menu()
         {
@@ -117,7 +118,7 @@ namespace AgilityTools
         {
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
-         }
+        }
 
         private void btn_login_MouseEnter(object sender, EventArgs e)
         {
@@ -132,7 +133,7 @@ namespace AgilityTools
 
         }
 
-      
+
 
         private void txt_UserName_Enter(object sender, EventArgs e)
         {
@@ -148,7 +149,7 @@ namespace AgilityTools
         {
             panel2.BackColor = Color.DarkGray;
             lblUsername.Visible = false;
-            if (txt_UserName.Text =="" )
+            if (txt_UserName.Text == "")
             {
                 txt_UserName.Text = "Masukan Username";
                 txt_UserName.Font = new Font("Microsoft Sans Serif", 12);
@@ -191,10 +192,17 @@ namespace AgilityTools
             btn_login.ForeColor = Color.Black;
             Login();
         }
-
-        private void FormLogin_Load(object sender, EventArgs e)
+        public Version AssemblyVersion
         {
-            
+            get
+            {
+                return ApplicationDeployment.CurrentDeployment.CurrentVersion;
+
+            }
+        }
+     
+        private void FormLogin_Load(object sender, EventArgs e)
+        { 
             lblPass.Visible = false;
             lblPass2.ForeColor = Color.DarkGray;
 

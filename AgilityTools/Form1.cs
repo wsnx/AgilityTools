@@ -19,7 +19,6 @@ namespace AgilityTools
             f2.Show();
              
         }
-
         private void Form1_Load(object sender, EventArgs e)
         {
             Controls.OfType<MdiClient>().FirstOrDefault().BackColor = Color.Black;

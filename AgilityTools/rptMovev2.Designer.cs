@@ -1,6 +1,6 @@
 ﻿namespace AgilityTools
 {
-    partial class rptMovementList
+    partial class rptMovev2
     {
         /// <summary> 
         /// Required designer variable.
@@ -34,6 +34,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txt_fromReceiptkey = new System.Windows.Forms.TextBox();
             this.btnPrint = new System.Windows.Forms.Button();
+            this.progressBar = new System.Windows.Forms.ProgressBar();
+            this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -49,7 +51,7 @@
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1005, 459);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(1365, 709);
             this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
@@ -69,21 +71,22 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.crystalReportViewer1);
-            this.splitContainer1.Size = new System.Drawing.Size(1005, 501);
-            this.splitContainer1.SplitterDistance = 38;
+            this.splitContainer1.Size = new System.Drawing.Size(1365, 771);
+            this.splitContainer1.SplitterDistance = 58;
             this.splitContainer1.TabIndex = 2;
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel1.Controls.Add(this.progressBar);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.txt_fromReceiptkey);
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1005, 38);
+            this.panel1.Size = new System.Drawing.Size(1365, 58);
             this.panel1.TabIndex = 0;
             // 
             // label1
@@ -91,9 +94,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(4, 10);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.Size = new System.Drawing.Size(87, 20);
             this.label1.TabIndex = 5;
-            this.label1.Text = "Receiptkey";
+            this.label1.Text = "MappingID";
             // 
             // txt_fromReceiptkey
             // 
@@ -117,13 +120,24 @@
             this.btnPrint.UseVisualStyleBackColor = false;
             this.btnPrint.Click += new System.EventHandler(this.btnPrint_Click);
             // 
-            // rptMovementList
+            // progressBar
+            // 
+            this.progressBar.Location = new System.Drawing.Point(423, 2);
+            this.progressBar.Name = "progressBar";
+            this.progressBar.Size = new System.Drawing.Size(352, 37);
+            this.progressBar.TabIndex = 6;
+            // 
+            // backgroundWorker1
+            // 
+            this.backgroundWorker1.DoWork += new System.ComponentModel.DoWorkEventHandler(this.backgroundWorker1_DoWork);
+            // 
+            // rptMove
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
-            this.Name = "rptMovementList";
-            this.Size = new System.Drawing.Size(1005, 501);
+            this.Name = "rptMove";
+            this.Size = new System.Drawing.Size(1365, 771);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -142,5 +156,7 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txt_fromReceiptkey;
         private System.Windows.Forms.Button btnPrint;
+        private System.Windows.Forms.ProgressBar progressBar;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
     }
 }

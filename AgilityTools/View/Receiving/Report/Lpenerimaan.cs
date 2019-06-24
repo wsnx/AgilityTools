@@ -43,7 +43,7 @@ namespace AgilityTools.View.Receiving.Report
             crParameterValues.Clear();
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-            cryRpt.SetDatabaseLogon("kadmin", "53c4dm1n", "10.130.24.4", "KaizenDB");
+            cryRpt.SetDatabaseLogon(ConfigDB.DbUserName, ConfigDB.DbPassword, ConfigDB.DbHostname, ConfigDB.DbName);
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Show();
         }

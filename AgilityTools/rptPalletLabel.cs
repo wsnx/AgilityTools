@@ -53,7 +53,7 @@ namespace AgilityTools
             crParameterValues.Clear();
             crParameterValues.Add(crParameterDiscreteValue);
             crParameterFieldDefinition.ApplyCurrentValues(crParameterValues);
-            cryRpt.SetDatabaseLogon("kadmin", "53c4dm1n", "10.130.24.4", "KaizenDB");
+            cryRpt.SetDatabaseLogon("kadmin", "53c4dm1n", "10.130.37.5", "KaizenDB");
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Show();
         
@@ -76,7 +76,7 @@ namespace AgilityTools
         }
         private void CreateData()
         {
-//            DeleteData();
+            DeleteData();
             try
             {
                 ConnLocal.Open();
@@ -86,9 +86,13 @@ namespace AgilityTools
                         " select @result = coalesce(@result+',','')+b.CartonID from  tbPLBSAMI_FG_tempGenerateLIST a inner join tbPLBSAMI_FG_stgMappingStock b on a.CartonID = b.CartonID " +
                         " " +
                         "select MappingID,@result as List,COUNT(b.cartoniD)as JumlahPolly , " +
-                        " CONCAT(MappingID,',',sku,',',COUNT(b.cartoniD),',',@result) as QRConfig " +
-                        " from tbPLBSAMI_FG_tempGenerateLIST a inner join tbPLBSAMI_FG_stgMappingStock b on a.CartonID = b.CartonID group by MappingID,sku");
+                        " CONCAT(MappingID,',',b.sku,',',COUNT(b.cartoniD),',',@result) as QRConfig " +
+                        " from tbPLBSAMI_FG_tempGenerateLIST a inner join tbPLBSAMI_FG_stgMappingStock b on a.CartonID = b.CartonID and a.sku = b.sku " +
+                        " where MappingID= @MappingID " +
+                        " group by MappingID,b.sku");
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
+
+                cmd.Parameters.AddWithValue("MappingID", txt_fromReceiptkey.Text);
                 DA.Fill(DsWMS);
                 ConnLocal.Close();
                 Insert();

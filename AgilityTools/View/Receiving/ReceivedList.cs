@@ -27,6 +27,7 @@ namespace AgilityTools.View.Receiving
         private void ReceivedList_Load(object sender, EventArgs e)
         {
             //Grid Design
+            Btn_Refresh.Enabled = false;
             DgsSummaryReceipt.EnableHeadersVisualStyles = false;
             dgsDetailsReceipt.EnableHeadersVisualStyles = false;
             dgsDetailsReceipt2.EnableHeadersVisualStyles = false;
@@ -140,10 +141,12 @@ namespace AgilityTools.View.Receiving
         private void DgsSummaryReceipt_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             AsnCell = DgsSummaryReceipt.Rows[e.RowIndex].Cells[0].Value.ToString();
+            Btn_Refresh.Enabled = true;
             DataDetail();
         }
         private void headerASN()
         {
+            
             Conn.Open();
             SqlCommand cmd = new SqlCommand();
             cmd.Connection = Conn;
@@ -243,6 +246,16 @@ namespace AgilityTools.View.Receiving
 
                 }
             }
+        }
+
+        private void Btn_Refresh_Click(object sender, EventArgs e)
+        {
+            DataDetail();
+        }
+
+        private void DgsSummaryReceipt_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 

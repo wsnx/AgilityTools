@@ -27,11 +27,10 @@
     <TargetCulture>id-ID</TargetCulture>
     <ProductName>PLB Tools v 1.0.1</ProductName>
     <PublisherName>Rizdiana Wisnu Murti</PublisherName>
-    <SuiteName>Rizdiana Wisnu Murti</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
     <TrustUrlParameters>true</TrustUrlParameters>
-    <ApplicationRevision>21</ApplicationRevision>
+    <ApplicationRevision>28</ApplicationRevision>
     <ApplicationVersion>1.0.1.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -119,6 +118,30 @@
     <Compile Include="Explorer.Designer.cs">
       <DependentUpon>Explorer.cs</DependentUpon>
     </Compile>
+    <Compile Include="View\Order\OrderHome.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Order\OrderHome.Designer.cs">
+      <DependentUpon>OrderHome.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Order\OrderNavigation.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="View\Order\OrderNavigation.Designer.cs">
+      <DependentUpon>OrderNavigation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptMappingList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="rptMappingList.Designer.cs">
+      <DependentUpon>rptMappingList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="rptMovev2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="rptMovev2.Designer.cs">
+      <DependentUpon>rptMovev2.cs</DependentUpon>
+    </Compile>
     <Compile Include="rptPalletLabel.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -136,12 +159,6 @@
     </Compile>
     <Compile Include="View\Mapping\Report\rptMovementList.Designer.cs">
       <DependentUpon>rptMovementList.cs</DependentUpon>
-    </Compile>
-    <Compile Include="View\Mapping\Report\rptMappingList.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="View\Mapping\Report\rptMappingList.Designer.cs">
-      <DependentUpon>rptMappingList.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Mapping\MappingHome.cs">
       <SubType>UserControl</SubType>
@@ -232,6 +249,18 @@
     <EmbeddedResource Include="Explorer.resx">
       <DependentUpon>Explorer.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\OrderHome.resx">
+      <DependentUpon>OrderHome.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Order\OrderNavigation.resx">
+      <DependentUpon>OrderNavigation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptMappingList.resx">
+      <DependentUpon>rptMappingList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="rptMovev2.resx">
+      <DependentUpon>rptMovev2.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="rptPalletLabel.resx">
       <DependentUpon>rptPalletLabel.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,9 +269,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\Mapping\Report\rptMovementList.resx">
       <DependentUpon>rptMovementList.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\Mapping\Report\rptMappingList.resx">
-      <DependentUpon>rptMappingList.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Mapping\MappingHome.resx">
       <DependentUpon>MappingHome.cs</DependentUpon>
@@ -321,27 +347,14 @@
     <Content Include="Images\refresh.png" />
     <Content Include="Images\search.png" />
     <Content Include="Images\w.ico" />
+    <None Include="Resources\list.png" />
+    <None Include="Resources\order.png" />
   </ItemGroup>
   <ItemGroup>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.5.2">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.5.2 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
-    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
-      <Visible>False</Visible>
-      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
-      <Install>true</Install>
-    </BootstrapperPackage>
     <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
       <Visible>False</Visible>
       <ProductName>.NET Framework 3.5 SP1</ProductName>
-      <Install>true</Install>
+      <Install>false</Install>
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>

@@ -30,14 +30,14 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.TreeNode treeNode1 = new System.Windows.Forms.TreeNode("Create");
-            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Progress", 8, 11);
-            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("Mapping", new System.Windows.Forms.TreeNode[] {
-            treeNode1,
-            treeNode2});
-            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("MappingList", 3, 11);
-            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("MovementList", 3, 11);
-            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("PalletLabel");
-            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Report", new System.Windows.Forms.TreeNode[] {
+            System.Windows.Forms.TreeNode treeNode2 = new System.Windows.Forms.TreeNode("Mapping", new System.Windows.Forms.TreeNode[] {
+            treeNode1});
+            System.Windows.Forms.TreeNode treeNode3 = new System.Windows.Forms.TreeNode("MappingList", 3, 11);
+            System.Windows.Forms.TreeNode treeNode4 = new System.Windows.Forms.TreeNode("Movement List", 3, 11);
+            System.Windows.Forms.TreeNode treeNode5 = new System.Windows.Forms.TreeNode("Pallet Label");
+            System.Windows.Forms.TreeNode treeNode6 = new System.Windows.Forms.TreeNode("Update Pallet");
+            System.Windows.Forms.TreeNode treeNode7 = new System.Windows.Forms.TreeNode("Report", 3, 11, new System.Windows.Forms.TreeNode[] {
+            treeNode3,
             treeNode4,
             treeNode5,
             treeNode6});
@@ -64,39 +64,42 @@
             this.MappingTree.Location = new System.Drawing.Point(0, 0);
             this.MappingTree.Name = "MappingTree";
             treeNode1.Name = "Create";
-            treeNode1.SelectedImageIndex = 10;
+            treeNode1.SelectedImageIndex = 11;
             treeNode1.Text = "Create";
-            treeNode2.ImageIndex = 8;
-            treeNode2.Name = "Progress";
-            treeNode2.SelectedImageIndex = 11;
-            treeNode2.Text = "Progress";
-            treeNode3.ImageKey = "folder.png";
-            treeNode3.Name = "Mapping";
-            treeNode3.SelectedImageIndex = 2;
-            treeNode3.Text = "Mapping";
+            treeNode2.ImageKey = "folder.png";
+            treeNode2.Name = "Mapping";
+            treeNode2.SelectedImageIndex = 2;
+            treeNode2.Text = "Mapping";
+            treeNode3.ImageIndex = 3;
+            treeNode3.Name = "MappingList";
+            treeNode3.SelectedImageIndex = 11;
+            treeNode3.Text = "MappingList";
             treeNode4.ImageIndex = 3;
-            treeNode4.Name = "MappingList";
+            treeNode4.Name = "MovementList";
             treeNode4.SelectedImageIndex = 11;
-            treeNode4.Text = "MappingList";
-            treeNode5.ImageIndex = 3;
-            treeNode5.Name = "MovementList";
+            treeNode4.Text = "Movement List";
+            treeNode5.ImageKey = "report.png";
+            treeNode5.Name = "PalletLabel";
             treeNode5.SelectedImageIndex = 11;
-            treeNode5.Text = "MovementList";
-            treeNode6.Name = "PalletLabel";
-            treeNode6.Text = "PalletLabel";
+            treeNode5.Text = "Pallet Label";
+            treeNode6.ImageKey = "report.png";
+            treeNode6.Name = "UpdatePallet";
+            treeNode6.SelectedImageIndex = 11;
+            treeNode6.Text = "Update Pallet";
             treeNode7.ImageIndex = 3;
             treeNode7.Name = "Report";
+            treeNode7.SelectedImageIndex = 11;
             treeNode7.Text = "Report";
             treeNode8.ImageIndex = 6;
             treeNode8.Name = "Back";
             treeNode8.SelectedImageIndex = 6;
             treeNode8.Text = "Back";
             this.MappingTree.Nodes.AddRange(new System.Windows.Forms.TreeNode[] {
-            treeNode3,
+            treeNode2,
             treeNode7,
             treeNode8});
             this.MappingTree.SelectedImageIndex = 0;
-            this.MappingTree.Size = new System.Drawing.Size(281, 701);
+            this.MappingTree.Size = new System.Drawing.Size(168, 701);
             this.MappingTree.TabIndex = 3;
             this.MappingTree.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.MappingTree_AfterSelect);
             // 
@@ -131,7 +134,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.PanelView);
             this.splitContainer1.Size = new System.Drawing.Size(1414, 701);
-            this.splitContainer1.SplitterDistance = 281;
+            this.splitContainer1.SplitterDistance = 168;
             this.splitContainer1.TabIndex = 1;
             // 
             // PanelView
@@ -139,7 +142,7 @@
             this.PanelView.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelView.Location = new System.Drawing.Point(0, 0);
             this.PanelView.Name = "PanelView";
-            this.PanelView.Size = new System.Drawing.Size(1129, 701);
+            this.PanelView.Size = new System.Drawing.Size(1242, 701);
             this.PanelView.TabIndex = 0;
             // 
             // MappingHomes

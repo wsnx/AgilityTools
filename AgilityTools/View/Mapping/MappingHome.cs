@@ -45,16 +45,26 @@ namespace AgilityTools
                 userControl.Dock = DockStyle.Fill;
                 PanelView.Controls.Add(userControl);
             }
-            else if (node.Text == "MovementList")
+            else if (node.Text == "Movement List")
             {
-                vKey = "2";
+                vKey = "1";
                 PanelView.Controls.Clear();
                 PanelView.Dock = DockStyle.Fill;
                 rptMovementList userControl = new rptMovementList();
                 userControl.Dock = DockStyle.Fill;
                 PanelView.Controls.Add(userControl);
             }
-            else if (node.Text == "PalletLabel")
+
+            else if (node.Text == "Update Pallet")
+            {
+                vKey = "2";
+                PanelView.Controls.Clear();
+                PanelView.Dock = DockStyle.Fill;
+                rptMovev2 userControl = new rptMovev2();
+                userControl.Dock = DockStyle.Fill;
+                PanelView.Controls.Add(userControl);
+            }
+            else if (node.Text == "Pallet Label")
             {
                 vKey = "1";
                 PanelView.Controls.Clear();

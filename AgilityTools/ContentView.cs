@@ -39,6 +39,16 @@ namespace AgilityTools
                 panelView.Controls.Add(userControl);
 
             }
+            else
+            if (Explorer.vkey == "3")
+            {
+                panelView.Controls.Clear();
+                panelView.Dock = DockStyle.Fill;
+                OrderNavigation userControl = new OrderNavigation();
+                userControl.Dock = DockStyle.Fill;
+                panelView.Controls.Add(userControl);
+
+            }
         }
 
         private void pictureBox2_Click(object sender, EventArgs e)

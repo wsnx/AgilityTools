@@ -41,9 +41,12 @@ namespace AgilityTools
                 f2.MdiParent = AgilityTools.ActiveForm;
                 f2.Show();
             }
-            else if (node.Text == "MappingList")
+            else if (node.Text == "Order")
             {
-
+                vkey = "3";
+                ContentView f2 = new ContentView();
+                f2.MdiParent = AgilityTools.ActiveForm;
+                f2.Show();
             }
          }
         private void Explorer_Load(object sender, EventArgs e)
