@@ -7,6 +7,7 @@ using System.Deployment.Application;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace AgilityTools
@@ -25,6 +26,7 @@ namespace AgilityTools
         public FormLogin()
         {
             InitializeComponent();
+            
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -48,10 +50,24 @@ namespace AgilityTools
         {
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
+            try
+            {
+                ConnLocal.Open();
+                goto eksekusi;
+            }
+            catch (Exception Ex)
+            {
+                ConnLocal.Close();
+                MessageBox.Show("Anda sedang Offline : " + Ex.ToString());
 
+
+            }
+
+            eksekusi:
             ConnLocal.Close();
-            SqlCommand cmd = new SqlCommand("select NIK,UserName,Password from kaizendb.dbo.tbplbsami_fg_user where nik =@nik", ConnLocal);
+            SqlCommand cmd = new SqlCommand("select NIK,UserName,Password from tbplbsami_fg_user where nik =@nik", ConnLocal);
             cmd.Parameters.AddWithValue("@NIK", txt_UserName.Text);
+
             ConnLocal.Open();
             var result = cmd.ExecuteScalar();
             if (result != null)
@@ -77,6 +93,7 @@ namespace AgilityTools
 
             if (NIK == txt_UserName.Text && txt_Pass.Text == Password)
             {
+
                 menu();
             }
             else
@@ -87,11 +104,9 @@ namespace AgilityTools
         }
         private void menu()
         {
-            this.Close();
-            Home f2 = new Home();
-            f2.MdiParent = AgilityTools.ActiveForm;
+            this.Hide();
+            Navigation f2 = new Navigation();
             f2.Show();
-
         }
         private void btn_login_MouseHover(object sender, EventArgs e)
         {
@@ -186,8 +201,10 @@ namespace AgilityTools
 
         }
 
+
         private void btn_login_Click(object sender, MouseEventArgs e)
         {
+            
             btn_login.BackColor = Color.DarkOrange;
             btn_login.ForeColor = Color.Black;
             Login();
@@ -205,6 +222,51 @@ namespace AgilityTools
         { 
             lblPass.Visible = false;
             lblPass2.ForeColor = Color.DarkGray;
+
+        }
+
+        private void lblKeluar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lbl_close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void lbl_close_MouseHover(object sender, EventArgs e)
+        {
+            lbl_close.BackColor = Color.Red;
+        }
+
+        private void lbl_close_MouseLeave(object sender, EventArgs e)
+        {
+            lbl_close.BackColor = Color.Transparent;
+        }
+
+        private void btn_login_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_close_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
+        }
+
+        private void btn_close_MouseHover(object sender, EventArgs e)
+        {
+            btn_close.BackColor = Color.Red;
+        }
+
+        private void btn_close_MouseLeave(object sender, EventArgs e)
+        {
+            btn_close.BackColor = Color.Transparent;
+        }
+
+        private void btn_login_Paint_1(object sender, PaintEventArgs e)
+        {
 
         }
     }

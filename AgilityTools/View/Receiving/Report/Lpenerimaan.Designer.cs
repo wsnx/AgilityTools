@@ -50,8 +50,9 @@
             this.crystalReportViewer1.Cursor = System.Windows.Forms.Cursors.Default;
             this.crystalReportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.crystalReportViewer1.Location = new System.Drawing.Point(0, 0);
+            this.crystalReportViewer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.crystalReportViewer1.Name = "crystalReportViewer1";
-            this.crystalReportViewer1.Size = new System.Drawing.Size(1030, 615);
+            this.crystalReportViewer1.Size = new System.Drawing.Size(868, 420);
             this.crystalReportViewer1.TabIndex = 1;
             this.crystalReportViewer1.ToolPanelView = CrystalDecisions.Windows.Forms.ToolPanelViewType.None;
             this.crystalReportViewer1.Load += new System.EventHandler(this.crystalReportViewer1_Load);
@@ -60,6 +61,7 @@
             // 
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -71,8 +73,9 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.crystalReportViewer1);
-            this.splitContainer1.Size = new System.Drawing.Size(1030, 670);
-            this.splitContainer1.SplitterDistance = 51;
+            this.splitContainer1.Size = new System.Drawing.Size(868, 457);
+            this.splitContainer1.SplitterDistance = 34;
+            this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 1;
             // 
             // panel1
@@ -86,16 +89,18 @@
             this.panel1.Controls.Add(this.btnPrint);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1030, 51);
+            this.panel1.Size = new System.Drawing.Size(868, 34);
             this.panel1.TabIndex = 1;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(316, 13);
+            this.label3.Location = new System.Drawing.Point(211, 8);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
+            this.label3.Size = new System.Drawing.Size(37, 13);
             this.label3.TabIndex = 9;
             this.label3.Text = "Status";
             // 
@@ -107,26 +112,29 @@
             "OK",
             "Shortage",
             "Excess"});
-            this.txt_Status.Location = new System.Drawing.Point(378, 8);
+            this.txt_Status.Location = new System.Drawing.Point(252, 5);
+            this.txt_Status.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_Status.Name = "txt_Status";
-            this.txt_Status.Size = new System.Drawing.Size(193, 28);
+            this.txt_Status.Size = new System.Drawing.Size(130, 21);
             this.txt_Status.TabIndex = 8;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(4, 10);
+            this.label1.Location = new System.Drawing.Point(3, 6);
+            this.label1.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(88, 20);
+            this.label1.Size = new System.Drawing.Size(61, 13);
             this.label1.TabIndex = 5;
             this.label1.Text = "Receiptkey";
             // 
             // txt_Receiptkey
             // 
             this.txt_Receiptkey.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_Receiptkey.Location = new System.Drawing.Point(96, 6);
+            this.txt_Receiptkey.Location = new System.Drawing.Point(64, 4);
+            this.txt_Receiptkey.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txt_Receiptkey.Name = "txt_Receiptkey";
-            this.txt_Receiptkey.Size = new System.Drawing.Size(199, 30);
+            this.txt_Receiptkey.Size = new System.Drawing.Size(134, 23);
             this.txt_Receiptkey.TabIndex = 4;
             this.txt_Receiptkey.Tag = "";
             // 
@@ -135,9 +143,10 @@
             this.btnPrint.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(0)))));
             this.btnPrint.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnPrint.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnPrint.Location = new System.Drawing.Point(577, 6);
+            this.btnPrint.Location = new System.Drawing.Point(385, 4);
+            this.btnPrint.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnPrint.Name = "btnPrint";
-            this.btnPrint.Size = new System.Drawing.Size(115, 37);
+            this.btnPrint.Size = new System.Drawing.Size(77, 24);
             this.btnPrint.TabIndex = 3;
             this.btnPrint.Text = "Show";
             this.btnPrint.UseVisualStyleBackColor = false;
@@ -145,11 +154,12 @@
             // 
             // Lpenerimaan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.splitContainer1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "Lpenerimaan";
-            this.Size = new System.Drawing.Size(1030, 670);
+            this.Size = new System.Drawing.Size(868, 457);
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

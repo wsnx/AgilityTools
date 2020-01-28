@@ -15,7 +15,7 @@ namespace AgilityTools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new AgilityTools());
+            Application.Run(new FormLogin());
         }
     }
 }

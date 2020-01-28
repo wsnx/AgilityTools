@@ -6,9 +6,9 @@ using System.Runtime.InteropServices;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle("AgilityTools")]
-[assembly: AssemblyDescription("")]
+[assembly: AssemblyDescription("Aplikasi PLB Tools Untuk Project PDPLB Agility untuk customer SAMI-Semarang (dev by : Rizdiana Wisnu Murti)")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Agility")]
+[assembly: AssemblyCompany("Agility International")]
 [assembly: AssemblyProduct("AgilityTools")]
 [assembly: AssemblyCopyright("Copyright ©  2019")]
 [assembly: AssemblyTrademark("")]
@@ -17,7 +17,7 @@ using System.Runtime.InteropServices;
 // Setting ComVisible to false makes the types in this assembly not visible
 // to COM components.  If you need to access a type in this assembly from
 // COM, set the ComVisible attribute to true on that type.
-[assembly: ComVisible(false)]
+[assembly: ComVisible(true)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
 [assembly: Guid("b4484899-b438-41c1-b17e-d97d92e1b78f")]

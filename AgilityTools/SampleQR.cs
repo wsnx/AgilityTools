@@ -64,8 +64,8 @@ namespace AgilityTools
                 ConnWMS.Open();
                 SqlCommand cmd = new SqlCommand();
                 cmd.Connection = ConnWMS;
-                cmd.CommandText = ("select concat('TF,1904,17,BIT2',',',SKU,',',Lottable01,',',cast(qtyexpected as int),',','tes') as QrConfig,RECEIPTKEY, " +
-                    " Lottable01 as CartonID, POLINENUMBER  as Pallet from RECEIPTDETAIL " +
+                cmd.CommandText = ("select concat('TF,1904,17,BIT2',',',SKU,',',Lottable10,',',cast(qtyexpected as int),',','tes') as QrConfig,RECEIPTKEY, " +
+                    " Lottable10 as CartonID, altsku  as Pallet from RECEIPTDETAIL " +
                     " where receiptkey=@Receiptkey");
                 cmd.Parameters.AddWithValue("Receiptkey", txt_fromReceiptkey.Text);
                 SqlDataAdapter DA = new SqlDataAdapter(cmd);
@@ -158,8 +158,6 @@ namespace AgilityTools
             cryRpt.SetDatabaseLogon(ConfigDB.DbUserName, ConfigDB.DbPassword, ConfigDB.DbHostname, ConfigDB.DbName);
             crystalReportViewer1.Refresh();
             crystalReportViewer1.Show();
-
-
 
         }
 
